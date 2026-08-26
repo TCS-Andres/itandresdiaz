@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Quicksand", system-ui, sans-serif;
+    --font-body: "DM Sans", system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-cream text-navy antialiased;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display font-bold tracking-tighter;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: #F28D3D;
+    color: #1C192A;
+  }
+
+  :focus-visible {
+    outline: 2px solid #F28D3D;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .section {
+    @apply py-20 md:py-28;
+  }
+
+  .eyebrow {
+    @apply font-display text-xs font-bold uppercase tracking-[0.18em];
+  }
+
+  .lede {
+    @apply text-lg leading-relaxed text-navy-400 md:text-xl;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-display text-[15px] font-bold
+           transition-all duration-200 active:scale-[0.98];
+  }
+
+  .btn-primary {
+    @apply btn bg-orange text-navy shadow-glow hover:bg-orange-600 hover:shadow-elevated;
+  }
+
+  .btn-ghost-dark {
+    @apply btn border border-white/25 text-white hover:border-white/60 hover:bg-white/10;
+  }
+
+  .btn-ghost-light {
+    @apply btn border border-navy/20 text-navy hover:border-navy/50 hover:bg-navy/[0.04];
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-white p-7 shadow-soft transition-all duration-300;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px] text-navy
+           placeholder:text-navy-300 transition-colors duration-200
+           focus:border-orange focus:outline-none focus:ring-4 focus:ring-orange/15;
+  }
+
+  .label {
+    @apply mb-1.5 block font-display text-[13px] font-bold text-navy;
+  }
+}
+
+/* Scroll reveal. Hidden until observed; the <noscript> override in the root
+   layout restores visibility when scripting is unavailable. */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

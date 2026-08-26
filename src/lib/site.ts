@@ -3,6 +3,20 @@
  * landing page can be re-pointed or reworded without touching components.
  */
 
+/**
+ * Web3Forms access key. This is public by design: Web3Forms only accepts
+ * submissions from the browser, so the key ships in the client bundle the same
+ * way it would sit in a static HTML form. It grants nothing except the ability
+ * to send a message to the inbox registered on the form.
+ *
+ * Rotate it from the Web3Forms dashboard, or override it here without a code
+ * change by setting NEXT_PUBLIC_WEB3FORMS_KEY.
+ */
+export const WEB3FORMS_KEY =
+  process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "9cb40bc3-e1b6-43bb-b3eb-62a6b5f68ae9";
+
+export const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+
 export const site = {
   name: "Andres Diaz",
   company: "The Creative Strategist",
@@ -126,7 +140,7 @@ export const paths = [
 ];
 
 /** Section 7: what working together actually looks like. */
-export const process = [
+export const processSteps = [
   {
     step: "01",
     title: "We talk",

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { site } from "@/lib/site";
+import { site, WEB3FORMS_ENDPOINT, WEB3FORMS_KEY } from "@/lib/site";
 
 const PRACTICE_TYPES = [
   "Dental practice",
@@ -31,29 +31,69 @@ export function ContactForm() {
     if (status === "sending") return;
 
     const form = event.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
+    const raw = new FormData(form);
+    const value = (key: string) => String(raw.get(key) ?? "").trim();
+
+    const name = value("name");
+    const email = value("email");
+    const practice = value("practice");
 
     setStatus("sending");
     setError("");
 
+    /*
+     * Posted straight from the browser on purpose: Web3Forms rejects
+     * server-side submissions on this plan, so a serverless proxy would 403.
+     * Keys are the labels that appear in the notification email, so they are
+     * written for a human reading the inbox rather than for code.
+     */
+    const payload: Record<string, string> = {
+      access_key: WEB3FORMS_KEY,
+      subject: `New inquiry: ${name}${practice ? ` (${practice})` : ""}`,
+      from_name: "itandresdiaz.com",
+      replyto: email,
+      botcheck: value("botcheck"),
+      Name: name,
+      Email: email,
+    };
+
+    // Only send the optional fields that were actually filled in, so the
+    // notification email does not carry a column of empty rows.
+    const optional: Array<[string, string]> = [
+      ["Practice", practice],
+      ["Phone", value("phone")],
+      ["Type of practice", value("practiceType")],
+      ["Looking for", value("interest")],
+      ["Message", value("message")],
+    ];
+    for (const [label, val] of optional) {
+      if (val) payload[label] = val;
+    }
+
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
       });
 
-      const payload = (await res.json().catch(() => ({}))) as { error?: string };
+      const result = (await res.json().catch(() => ({}))) as {
+        success?: boolean;
+        message?: string;
+      };
 
-      if (!res.ok) {
-        throw new Error(payload.error || "Something went wrong on our end.");
+      if (!res.ok || !result.success) {
+        throw new Error(result.message || `Request failed with status ${res.status}`);
       }
 
       setStatus("sent");
       form.reset();
     } catch (err) {
+      // The real reason goes to the console for debugging. Visitors get one
+      // plain sentence and a way to reach Andres, never raw API wording.
+      console.error("[contact] submission failed:", err);
       setStatus("error");
-      setError(err instanceof Error ? err.message : "Something went wrong on our end.");
+      setError("Sorry, that did not go through.");
     }
   }
 
@@ -106,10 +146,14 @@ export function ContactForm() {
       noValidate={false}
       className="relative rounded-2xl border border-line bg-white p-6 shadow-soft md:p-9"
     >
-      {/* Honeypot. Real people never see it, bots fill it in. */}
+      {/*
+        Honeypot. "botcheck" is the field name Web3Forms looks for: if it comes
+        back filled, they discard the submission as spam. Hidden from people and
+        from screen readers, and skipped by keyboard tabbing.
+      */}
       <div className="absolute -left-[9999px]" aria-hidden="true">
-        <label htmlFor="company_website">Do not fill this in</label>
-        <input id="company_website" name="company_website" type="text" tabIndex={-1} autoComplete="off" />
+        <label htmlFor="botcheck">Leave this field empty</label>
+        <input id="botcheck" name="botcheck" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">

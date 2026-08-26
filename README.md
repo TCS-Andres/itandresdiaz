@@ -20,40 +20,43 @@ The site runs on http://localhost:3003.
 
 ## Contact form
 
-Submissions POST to `/api/contact`, which sends two emails through Resend:
+Submissions go straight from the browser to [Web3Forms](https://web3forms.com), which emails them
+to the inbox registered on the form. There is no server route and no API key to configure: the
+page works the moment it is deployed.
 
-1. A lead notification to `NOTIFY_EMAIL`, with `reply_to` set to the visitor so a reply goes
-   straight back to them.
-2. A courtesy confirmation to the visitor, sent after the response using `after()` so it never
-   delays the form.
+This has to be a client side POST. Web3Forms rejects server side submissions on the free plan
+(`403: This method is not allowed. Use our API in client side`), so proxying it through a route
+handler would fail. The access key is therefore public, which is how Web3Forms is designed: it
+ships in static HTML on their own examples, and it grants nothing beyond sending a message to the
+registered inbox.
 
-The lead notification is the one that matters. If it fails, the API returns a 502 and the form
-tells the visitor to email Andres directly, so an inquiry is never silently lost. The failed
-payload is also written to the server log as a backstop.
+The form sets `replyto` to the visitor's address, so replying from the inbox goes straight back to
+them. Optional fields are only included when filled, keeping the notification email clean.
 
-Spam is handled with a hidden honeypot field. Bots that fill it get a success response and no
-email is sent.
+If the request fails, the form shows the error alongside a direct mailto link rather than
+pretending it succeeded, so an inquiry is never silently lost.
 
-### Environment variables
+Spam is handled by a hidden `botcheck` honeypot field, which is the name Web3Forms looks for.
+Submissions that arrive with it filled are discarded on their side.
 
-Copy `.env.example` to `.env.local` and fill it in:
+### Configuration
 
-| Variable | Required | Purpose |
-|---|---|---|
-| `RESEND_API_KEY` | yes | Resend API key. Without it the form returns an error. |
-| `RESEND_FROM` | no | Sender address. Defaults to the Resend sandbox sender. |
-| `NOTIFY_EMAIL` | no | Where lead notifications land. Defaults to andres@mycreativestrategist.com. |
-| `RESEND_API_URL` | no | Overrides the Resend endpoint. Only used to point at a stub in testing. |
+None required. The access key lives in [`src/lib/site.ts`](src/lib/site.ts).
 
-Until `mycreativestrategist.com` is verified in Resend, leave `RESEND_FROM` on the sandbox sender
-`The Creative Strategist <onboarding@resend.dev>`. After verifying the domain, switch it to
-`Andres Diaz <andres@mycreativestrategist.com>` so replies and deliverability look right.
+To rotate the key, change it in the Web3Forms dashboard and either update that file or set
+`NEXT_PUBLIC_WEB3FORMS_KEY` in the environment, which takes precedence.
+
+Two settings worth reviewing in the Web3Forms dashboard:
+
+- **Allowed domains.** Restrict the key to the production domain so the form cannot be submitted
+  from someone else's page.
+- **Autoresponder.** The page shows a thank you state immediately, but if you want the visitor to
+  also receive a confirmation email, that is a dashboard setting rather than a code change.
 
 ## Deploying
 
-Import the repo in Vercel, add the environment variables above under Project Settings, and deploy.
-No other configuration is needed. The page is statically prerendered and only `/api/contact` runs
-on demand.
+Import the repo in Vercel and deploy. There are no environment variables and no build
+configuration to set. Every route is statically prerendered.
 
 ## Editing the copy
 
@@ -78,16 +81,14 @@ src/
     layout.tsx           fonts, metadata, noscript reveal fallback
     page.tsx             section order and JSON-LD
     globals.css          design tokens and component classes
-    api/contact/route.ts form handler and email templates
   components/
     site-nav.tsx         fixed header with mobile sheet
     site-footer.tsx
-    contact-form.tsx     the form, its states, and the fallback message
+    contact-form.tsx     the form, its states, and the Web3Forms submission
     reveal.tsx           scroll fade-in, fails open to visible
     sections/            one file per page section
   lib/
-    site.ts              all copy and contact details
-    resend.ts            minimal Resend REST client
+    site.ts              all copy, contact details, and the Web3Forms key
 ```
 
 ## A note on the reveal animation

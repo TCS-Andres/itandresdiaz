@@ -1,5 +1,5 @@
 import { Reveal } from "@/components/reveal";
-import { process, values } from "@/lib/site";
+import { processSteps, values } from "@/lib/site";
 
 export function Process() {
   return (
@@ -13,7 +13,7 @@ export function Process() {
         </Reveal>
 
         <ol className="mt-14 grid gap-6 md:grid-cols-3">
-          {process.map((item, i) => (
+          {processSteps.map((item, i) => (
             <Reveal as="li" key={item.step} delay={i * 110}>
               <div className="relative h-full rounded-2xl border border-line bg-white p-7 shadow-soft">
                 <div className="flex items-center gap-4">

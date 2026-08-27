@@ -250,13 +250,13 @@ export function ContactForm() {
 
       <div className="mt-5">
         <label className="label" htmlFor="message">
-          What is going on in the practice right now
+          What is going on right now
         </label>
         <textarea
           id="message"
           name="message"
           rows={5}
-          placeholder="Tell me what is working, what is frustrating, and what you would like to be different a year from now. As much or as little detail as you want."
+          placeholder="A few sentences is plenty. What is working, what is not, and what you would like to change."
           className="field resize-y"
         />
       </div>

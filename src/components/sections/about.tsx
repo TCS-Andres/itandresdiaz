@@ -29,25 +29,15 @@ export function About() {
             I am the strategist, not the sales rep who hands you off.
           </h2>
 
-          <div className="mt-6 space-y-5 text-[17px] leading-relaxed text-navy-400">
+          <div className="mt-6 space-y-4 text-[17px] leading-relaxed text-navy-400">
             <p>
-              My name is Andres Diaz and I run {site.company} out of {site.location}. I serve as a
-              fractional CMO, marketing specialist, and AI specialist for businesses ranging from
-              local practices to multi million dollar companies, with a real focus on health and
-              wellness.
+              I run {site.company} out of {site.location}, working as a fractional CMO and AI
+              specialist for practices that want to grow without building a marketing department.
             </p>
             <p>
-              Health and wellness is not a vertical I picked off a list. It is personal to me, and
-              it means I understand something that generic agencies miss: your marketing is not
-              selling a product. It is asking someone to trust you with their body, their sleep,
-              their smile, or their family. That deserves more care than a template and a
-              posting schedule.
-            </p>
-            <p>
-              What you get with me is the brain and the muscle together. I bring the strategy
-              myself, my team executes across every channel, and we build AI systems into the
-              operation so the work keeps running when everyone goes home. You are not handed to
-              an account manager after the first call.
+              Health and wellness is personal to me. Your marketing is not selling a product. It
+              is asking someone to trust you with their body, their sleep, or their family. That
+              deserves more than a template.
             </p>
           </div>
 
@@ -56,10 +46,9 @@ export function About() {
               &ldquo;Marketing is an investment, not an expense.&rdquo;
             </p>
             <p className="mt-3 text-[15px] leading-relaxed text-navy-400">
-              Think of your practice as an airplane. Your overhead is the body, your services are
-              the wings, and your marketing and sales are the engines. Money spent on overhead
-              makes the plane heavier. Money spent on the engines makes it go farther. Most
-              practices are trying to fly on one weak engine.
+              Your practice is an airplane. Overhead is the body, marketing and sales are the
+              engines. Spending on the body makes it heavier. Spending on the engines makes it
+              go farther.
             </p>
           </blockquote>
         </Reveal>

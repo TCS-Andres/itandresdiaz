@@ -36,9 +36,8 @@ export function Contact() {
             Tell me about your practice.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-white/70">
-            No pitch deck, no pressure, and no obligation on the other side of this. Just a
-            conversation about where you are and whether I am the right person to help. If I am
-            not, I will point you toward someone who is.
+            No pitch and no pressure. Just a conversation about where you are and whether I am
+            the right person to help.
           </p>
         </Reveal>
 

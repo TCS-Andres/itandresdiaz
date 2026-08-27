@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { site } from "@/lib/site";
+import { hero, site } from "@/lib/site";
 
 export function Hero() {
   return (
@@ -23,7 +23,7 @@ export function Hero() {
               className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full bg-orange"
               aria-hidden="true"
             />
-            For dentists, doctors, and health and wellness practices
+            {hero.eyebrow}
           </p>
 
           <h1 className="mt-7 text-[2.6rem] leading-[1.06] sm:text-5xl lg:text-[3.9rem]">
@@ -39,10 +39,8 @@ export function Hero() {
             , trust you, and choose you.
           </h1>
 
-          <p className="mt-7 max-w-xl text-lg leading-relaxed text-white/70 md:text-xl">
-            I am Andres Diaz. I combine marketing strategy, real execution, and applied AI to
-            help practices like yours become the obvious choice in your community, without
-            pulling you away from the patients already in your chair.
+          <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/70">
+            {hero.lede}
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -59,7 +57,7 @@ export function Hero() {
             </a>
           </div>
 
-          <p className="mt-7 text-sm text-white/45">
+          <p className="mt-6 text-sm text-white/45">
             Based in {site.location}. Working with practices nationwide.
           </p>
         </div>

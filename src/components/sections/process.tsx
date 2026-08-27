@@ -8,7 +8,7 @@ export function Process() {
         <Reveal className="max-w-2xl">
           <p className="eyebrow text-orange-600">How it works</p>
           <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
-            Three steps, and the first one costs you nothing but a conversation.
+            Three steps. The first one is just a conversation.
           </h2>
         </Reveal>
 
@@ -29,19 +29,16 @@ export function Process() {
         </ol>
 
         <div className="mt-20">
-          <Reveal className="max-w-2xl">
+          <Reveal>
             <p className="eyebrow text-orange-600">How I operate</p>
-            <h2 className="mt-4 text-2xl sm:text-3xl">
-              A few things you should know before you call.
-            </h2>
           </Reveal>
 
-          <div className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+          <div className="mt-8 grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((value, i) => (
-              <Reveal key={value.title} delay={i * 80}>
-                <div className="border-t-2 border-orange/70 pt-5">
-                  <h3 className="text-lg">{value.title}</h3>
-                  <p className="mt-2.5 leading-relaxed text-navy-400">{value.body}</p>
+              <Reveal key={value.title} delay={i * 70}>
+                <div className="border-t-2 border-orange/70 pt-4">
+                  <h3 className="text-[17px] leading-snug">{value.title}</h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-navy-400">{value.body}</p>
                 </div>
               </Reveal>
             ))}

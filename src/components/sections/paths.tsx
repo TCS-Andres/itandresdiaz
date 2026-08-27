@@ -11,8 +11,7 @@ export function Paths() {
             Start where it makes sense for your practice.
           </h2>
           <p className="lede mt-5">
-            There is no single package everyone gets pushed into. What we build depends on where
-            you are, what you already have, and what would actually move the needle first.
+            No single package everyone gets pushed into. What we build depends on where you are.
           </p>
         </Reveal>
 
@@ -59,10 +58,8 @@ export function Paths() {
         </div>
 
         <Reveal delay={140}>
-          <p className="mx-auto mt-12 max-w-2xl text-center leading-relaxed text-navy-400">
-            I do not publish pricing, because I have never met two practices with the same
-            situation. What I can tell you is that we scope it together, you see the full
-            investment before you commit to anything, and there are no surprises after.
+          <p className="mx-auto mt-12 max-w-xl text-center leading-relaxed text-navy-400">
+            We scope it together, and you see the full investment before you commit to anything.
           </p>
         </Reveal>
       </div>

@@ -31,14 +31,7 @@ export function MasterBrain() {
           <div className="mt-9 rounded-2xl border border-white/12 bg-white/[0.05] p-6">
             <p className="eyebrow text-white/45">The Master Brain captures</p>
             <ul className="mt-4 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
-              {[
-                "Your voice and tone",
-                "Your values and standards",
-                "Your services and specialties",
-                "Your ideal patient",
-                "How your practice actually runs",
-                "What you will never say",
-              ].map((item) => (
+              {masterBrain.captures.map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-[15px] leading-snug text-white/80">
                   <span
                     className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-orange"

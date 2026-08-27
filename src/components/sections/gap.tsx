@@ -11,9 +11,8 @@ export function Gap() {
             You are excellent at what you do. That is not the problem.
           </h2>
           <p className="lede mt-5">
-            The practices I work with are rarely struggling with clinical quality. They are
-            struggling with the space between the care they deliver and the people who never
-            found out about it. Usually it looks like one of these.
+            The practices I work with are rarely struggling with quality of care. It is
+            usually one of these instead.
           </p>
         </Reveal>
 

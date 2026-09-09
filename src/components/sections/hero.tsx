@@ -47,13 +47,8 @@ export function Hero() {
             <a href="#contact" className="btn-primary w-full sm:w-auto">
               Let us talk about your business
             </a>
-            <a
-              href={site.calendly}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-ghost-dark w-full sm:w-auto"
-            >
-              Book a 30 minute call
+            <a href="#guide" className="btn-ghost-dark w-full sm:w-auto">
+              Get the free marketing guide
             </a>
           </div>
 

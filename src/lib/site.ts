@@ -30,7 +30,7 @@ export const site = {
   email: "andres@mycreativestrategist.com",
   calendly: "https://calendly.com/andres-hdw/30min",
   website: "https://mycreativestrategist.com",
-  url: "https://itandresdiaz.com",
+  url: "https://www.itsandresdiaz.com",
   social: {
     instagram: "https://instagram.com/mycreativestrategist",
     linkedin: "https://linkedin.com/in/andresdiazmiami",
@@ -50,6 +50,7 @@ export const nav = [
   { label: "About me", href: "#about" },
   { label: "What I do", href: "#services" },
   { label: "How it works", href: "#process" },
+  { label: "Free guide", href: "#guide" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -205,3 +206,32 @@ export const values = [
     body: "I want to be invested in where your business is going.",
   },
 ];
+
+/** Path to the lead magnet in /public, and the filename a visitor ends up with. */
+export const GUIDE_PDF = "/the-complete-guide-to-marketing-channels.pdf";
+export const GUIDE_FILENAME = "The Complete Guide to Marketing Channels.pdf";
+
+/** The free guide offered as the secondary call to action. */
+export const guide = {
+  eyebrow: "Free resource",
+  title: "The Complete Guide to Marketing Channels",
+  lede: "Every channel worth your time, and how to build a creative strategy around them. Eleven categories, more than fifty channels, with real examples from real small businesses.",
+  pullQuote: "You do not need every channel. Nobody does.",
+  pullBody:
+    "The guide is a menu, not a checklist. Pick one channel to be found, one to build relationships, and one to accelerate. Do those three with excellence before you add a fourth.",
+  categories: [
+    "Owned Digital",
+    "Organic Social",
+    "Paid Digital",
+    "Content and Authority",
+    "Local and Community",
+    "Partnership and Referral",
+    "Traditional and Offline",
+    "Marketplaces and Directories",
+    "PR and Earned Media",
+    "Experiential and Guerrilla",
+    "Emerging and AI Powered",
+  ],
+  facts: ["22 pages", "11 categories", "50+ channels", "Free"],
+  formNote: "I will send it straight to your screen. No sequence, no list you did not ask to be on.",
+};

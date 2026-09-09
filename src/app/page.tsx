@@ -8,6 +8,7 @@ import { Services } from "@/components/sections/services";
 import { MasterBrain } from "@/components/sections/master-brain";
 import { Paths } from "@/components/sections/paths";
 import { Process } from "@/components/sections/process";
+import { Guide } from "@/components/sections/guide";
 import { Contact } from "@/components/sections/contact";
 import { site } from "@/lib/site";
 
@@ -54,6 +55,7 @@ export default function Page() {
         <MasterBrain />
         <Paths />
         <Process />
+        <Guide />
         <Contact />
       </main>
       <SiteFooter />

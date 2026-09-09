@@ -27,7 +27,7 @@ export function Hero() {
           </p>
 
           <h1 className="mt-7 text-[2.6rem] leading-[1.06] sm:text-5xl lg:text-[3.9rem]">
-            Get more patients to{" "}
+            Get more people to{" "}
             <span className="relative whitespace-nowrap">
               <span className="relative z-10">know you</span>
               {/* Sits clear of the descenders so it reads as a rule, not a strikethrough. */}
@@ -36,7 +36,7 @@ export function Hero() {
                 className="absolute inset-x-0 -bottom-1 z-0 h-1.5 rounded-full bg-orange"
               />
             </span>
-            , trust you, and choose you.
+            , trust you, and do business with you.
           </h1>
 
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/70">
@@ -45,7 +45,7 @@ export function Hero() {
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="#contact" className="btn-primary w-full sm:w-auto">
-              Let us talk about your practice
+              Let us talk about your business
             </a>
             <a
               href={site.calendly}
@@ -58,7 +58,7 @@ export function Hero() {
           </div>
 
           <p className="mt-6 text-sm text-white/45">
-            Based in {site.location}. Working with practices nationwide.
+            Based in {site.location}. Working with businesses nationwide.
           </p>
         </div>
 

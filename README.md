@@ -1,8 +1,12 @@
 # itandresdiaz
 
-A one page landing site for Andres Diaz, built for dentists, physicians, and health and wellness
-practice owners. Its job is to explain who Andres is, what he does across strategy, marketing, and
-AI, and to capture inquiries through a contact form.
+A one page landing site for Andres Diaz, aimed at business owners in any industry. Its job is to
+explain who Andres is, what he does across strategy, marketing, and AI, and to capture inquiries
+through a contact form.
+
+The copy is deliberately industry neutral so the page can be shared after any talk or event. An
+earlier healthcare specific version lives in the git history at commit 970b633 if that framing is
+ever needed again.
 
 Built with Next.js 16 (App Router), TypeScript, and Tailwind CSS.
 

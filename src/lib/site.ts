@@ -3,7 +3,9 @@
  * landing page can be re-pointed or reworded without touching components.
  *
  * House style: short. Two sentences per block is the ceiling. This page is read
- * on a phone by someone between patients, so anything that can be cut, gets cut.
+ * on a phone by a busy owner between meetings, so anything that can be cut, gets
+ * cut. Keep the language industry neutral: the audience is any business owner,
+ * not one vertical.
  */
 
 /**
@@ -33,14 +35,14 @@ export const site = {
     instagram: "https://instagram.com/mycreativestrategist",
     linkedin: "https://linkedin.com/in/andresdiazmiami",
   },
-  metaTitle: "Andres Diaz | Marketing, Strategy, and AI for Health and Wellness Practices",
+  metaTitle: "Andres Diaz | Marketing Strategy and AI for Growing Businesses",
   metaDescription:
-    "I help dentists, physicians, and health and wellness practice owners get more patients to know them, trust them, and do business with them, using creative strategy and applied AI.",
+    "I help business owners get more people to know them, trust them, and do business with them, by combining creative strategy, marketing, and applied AI.",
 };
 
 export const hero = {
-  eyebrow: "For dentists, doctors, and health and wellness practices",
-  lede: "I am Andres Diaz. I bring strategy, marketing, and AI together so your practice becomes the obvious choice in your community.",
+  eyebrow: "For business owners who are ready to grow",
+  lede: "I am Andres Diaz. I bring strategy, marketing, and AI together so your business becomes the obvious choice in your market.",
 };
 
 export const nav = [
@@ -52,27 +54,27 @@ export const nav = [
 ];
 
 export const industries = [
-  "Dental practices",
-  "Physicians and specialists",
-  "Med spas",
-  "Wellness clinics",
-  "Chiropractic",
-  "Sleep and airway",
-  "Aesthetics",
-  "Physical therapy",
-  "Functional medicine",
-  "Private practice groups",
+  "Home services",
+  "Professional services",
+  "Health and wellness",
+  "Restaurants and hospitality",
+  "Retail and ecommerce",
+  "Real estate",
+  "Construction and trades",
+  "Legal and financial",
+  "Med spas and clinics",
+  "B2B and manufacturing",
 ];
 
-/** The problem, framed the way a practice owner actually feels it. */
+/** The problem, framed the way an owner actually feels it. */
 export const problems = [
   {
     title: "The phone rings and nobody picks up",
-    body: "Your front desk is with a patient. That caller does not leave a message. They call the practice down the street instead.",
+    body: "Your team is busy with a customer. That caller does not leave a message. They call your competitor instead.",
   },
   {
     title: "You are the best kept secret in town",
-    body: "Your patients love you. The people who still need you have never heard your name.",
+    body: "Your customers love you. The people who still need you have never heard your name.",
   },
   {
     title: "Marketing happens whenever there is time",
@@ -80,21 +82,21 @@ export const problems = [
   },
   {
     title: "AI feels like one more thing you are behind on",
-    body: "Everyone says you should be using it. Nobody has shown you what it actually does for a practice like yours.",
+    body: "Everyone says you should be using it. Nobody has shown you what it actually does for a business like yours.",
   },
 ];
 
-/** The three disciplines, described for a clinical audience. */
+/** The three disciplines. */
 export const pillars = [
   {
     number: "01",
     title: "Strategy",
     tagline: "The plan before the tactics",
-    body: "We get clear on who your ideal patient is and what makes you different. Everything else is built on that.",
+    body: "We get clear on who your ideal customer is and what makes you different. Everything else is built on that.",
     items: [
       "Fractional CMO leadership",
       "Positioning and messaging",
-      "Patient journey mapping",
+      "Customer journey mapping",
       "A growth roadmap with priorities",
     ],
   },
@@ -114,11 +116,11 @@ export const pillars = [
     number: "03",
     title: "AI Implementation",
     tagline: "The systems that catch what you miss",
-    body: "Where practices feel it fastest. AI answers the calls you miss and follows up with every lead.",
+    body: "Where most owners feel it fastest. AI answers the calls you miss and follows up with every lead.",
     items: [
       "Voice agents for missed calls",
-      "Website and Instagram chatbots",
-      "Automated follow up and recall",
+      "Website and social chatbots",
+      "Automated follow up and reviews",
       "Workflow automation",
     ],
   },
@@ -142,7 +144,7 @@ export const paths = [
   {
     title: "Fractional CMO",
     subtitle: "Marketing leadership, part time",
-    body: "For practices and groups that need a marketing leader at the table without a full in house department.",
+    body: "For companies that need a marketing leader at the table without carrying a full in house department.",
     best: "Best if you have a team but nobody directing it.",
   },
 ];
@@ -162,7 +164,7 @@ export const processSteps = [
   {
     step: "03",
     title: "We build it together",
-    body: "My team executes while you stay with your patients. Regular reporting and a direct line to me.",
+    body: "My team executes while you stay focused on running the business. Regular reporting and a direct line to me.",
   },
 ];
 
@@ -171,16 +173,16 @@ export const masterBrain = {
   eyebrow: "The part most people skip",
   title: "AI without an identity is a liability",
   body: [
-    "Most practices that try AI alone end up sounding like everyone else. It technically works, and it quietly costs you the trust you spent years building.",
-    "So before any tool goes live, I build you a Master Brain: one document that captures how your practice actually sounds and runs. Every AI system I build for you is grounded in it.",
+    "Most businesses that try AI alone end up sounding like everyone else. It technically works, and it quietly costs you the trust you spent years building.",
+    "So before any tool goes live, I build you a Master Brain: one document that captures how your business actually sounds and runs. Every AI system I build for you is grounded in it.",
   ],
   callout: "Identity first. Tools second.",
   captures: [
     "Your voice and tone",
     "Your values and standards",
-    "Your services",
-    "Your ideal patient",
-    "How your practice runs",
+    "Your products and services",
+    "Your ideal customer",
+    "How your business runs",
     "What you will never say",
   ],
 };
@@ -196,10 +198,10 @@ export const values = [
   },
   {
     title: "Honest about outcomes",
-    body: "I will never promise you a number of patients. I guarantee the standard of the work.",
+    body: "I will not promise you specific numbers. I guarantee the systems and the standard of the work.",
   },
   {
     title: "A partner, not a vendor",
-    body: "I want to be invested in where your practice is going.",
+    body: "I want to be invested in where your business is going.",
   },
 ];

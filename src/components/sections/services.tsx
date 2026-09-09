@@ -28,8 +28,8 @@ export function Services() {
             Three disciplines, built to work as one.
           </h2>
           <p className="lede mt-5">
-            Most practices hire these separately and end up with three vendors who never talk
-            to each other. I bring them together.
+            Most businesses hire these separately and end up with three vendors who never
+            talk to each other. I bring them together.
           </p>
         </Reveal>
 

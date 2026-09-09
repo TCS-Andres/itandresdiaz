@@ -32,12 +32,13 @@ export function About() {
           <div className="mt-6 space-y-4 text-[17px] leading-relaxed text-navy-400">
             <p>
               I run {site.company} out of {site.location}, working as a fractional CMO and AI
-              specialist for practices that want to grow without building a marketing department.
+              specialist for businesses that want to grow without building a marketing
+              department.
             </p>
             <p>
-              Health and wellness is personal to me. Your marketing is not selling a product. It
-              is asking someone to trust you with their body, their sleep, or their family. That
-              deserves more than a template.
+              I work with owners, not committees. Your marketing is not just selling a product.
+              It is asking someone to trust you with their money, their home, or their health.
+              That deserves more than a template.
             </p>
           </div>
 
@@ -46,7 +47,7 @@ export function About() {
               &ldquo;Marketing is an investment, not an expense.&rdquo;
             </p>
             <p className="mt-3 text-[15px] leading-relaxed text-navy-400">
-              Your practice is an airplane. Overhead is the body, marketing and sales are the
+              Your business is an airplane. Overhead is the body, marketing and sales are the
               engines. Spending on the body makes it heavier. Spending on the engines makes it
               go farther.
             </p>

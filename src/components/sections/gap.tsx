@@ -11,8 +11,8 @@ export function Gap() {
             You are excellent at what you do. That is not the problem.
           </h2>
           <p className="lede mt-5">
-            The practices I work with are rarely struggling with quality of care. It is
-            usually one of these instead.
+            The businesses I work with are rarely struggling with the quality of what they
+            do. It is usually one of these instead.
           </p>
         </Reveal>
 

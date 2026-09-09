@@ -33,7 +33,7 @@ export function Contact() {
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-orange">Let us talk</p>
           <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
-            Tell me about your practice.
+            Tell me about your business.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-white/70">
             No pitch and no pressure. Just a conversation about where you are and whether I am
@@ -58,7 +58,7 @@ export function Contact() {
               </span>
               <p className="mt-4 font-display text-lg font-bold">Rather just talk?</p>
               <p className="mt-2 text-[15px] leading-relaxed text-white/65">
-                Grab 30 minutes on my calendar. Pick a time that works around your patient
+                Grab 30 minutes on my calendar. Pick a time that works around your
                 schedule.
               </p>
               <span className="mt-4 inline-flex items-center gap-2 font-display text-[15px] font-bold text-orange">

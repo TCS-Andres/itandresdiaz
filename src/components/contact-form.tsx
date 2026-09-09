@@ -3,13 +3,15 @@
 import { useState, type FormEvent } from "react";
 import { site, WEB3FORMS_ENDPOINT, WEB3FORMS_KEY } from "@/lib/site";
 
-const PRACTICE_TYPES = [
-  "Dental practice",
-  "Physician or specialist practice",
-  "Med spa or aesthetics",
-  "Wellness or functional medicine clinic",
-  "Chiropractic or physical therapy",
-  "Other health and wellness business",
+const BUSINESS_TYPES = [
+  "Home services or trades",
+  "Professional services",
+  "Health and wellness",
+  "Restaurant or hospitality",
+  "Retail or ecommerce",
+  "Real estate or construction",
+  "B2B, manufacturing, or logistics",
+  "Something else",
 ];
 
 const INTERESTS = [
@@ -36,7 +38,7 @@ export function ContactForm() {
 
     const name = value("name");
     const email = value("email");
-    const practice = value("practice");
+    const business = value("business");
 
     setStatus("sending");
     setError("");
@@ -49,7 +51,7 @@ export function ContactForm() {
      */
     const payload: Record<string, string> = {
       access_key: WEB3FORMS_KEY,
-      subject: `New inquiry: ${name}${practice ? ` (${practice})` : ""}`,
+      subject: `New inquiry: ${name}${business ? ` (${business})` : ""}`,
       from_name: "itandresdiaz.com",
       replyto: email,
       botcheck: value("botcheck"),
@@ -60,9 +62,9 @@ export function ContactForm() {
     // Only send the optional fields that were actually filled in, so the
     // notification email does not carry a column of empty rows.
     const optional: Array<[string, string]> = [
-      ["Practice", practice],
+      ["Business", business],
       ["Phone", value("phone")],
-      ["Type of practice", value("practiceType")],
+      ["Type of business", value("businessType")],
       ["Looking for", value("interest")],
       ["Message", value("message")],
     ];
@@ -167,21 +169,21 @@ export function ContactForm() {
             type="text"
             required
             autoComplete="name"
-            placeholder="Dr. Jane Smith"
+            placeholder="Jane Smith"
             className="field"
           />
         </div>
 
         <div>
-          <label className="label" htmlFor="practice">
-            Practice name
+          <label className="label" htmlFor="business">
+            Business name
           </label>
           <input
-            id="practice"
-            name="practice"
+            id="business"
+            name="business"
             type="text"
             autoComplete="organization"
-            placeholder="Smith Family Dental"
+            placeholder="Smith and Co."
             className="field"
           />
         </div>
@@ -196,7 +198,7 @@ export function ContactForm() {
             type="email"
             required
             autoComplete="email"
-            placeholder="you@yourpractice.com"
+            placeholder="you@yourbusiness.com"
             className="field"
           />
         </div>
@@ -216,14 +218,14 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label className="label" htmlFor="practiceType">
-            Type of practice
+          <label className="label" htmlFor="businessType">
+            Type of business
           </label>
-          <select id="practiceType" name="practiceType" className="field" defaultValue="">
+          <select id="businessType" name="businessType" className="field" defaultValue="">
             <option value="" disabled>
               Select one
             </option>
-            {PRACTICE_TYPES.map((t) => (
+            {BUSINESS_TYPES.map((t) => (
               <option key={t} value={t}>
                 {t}
               </option>

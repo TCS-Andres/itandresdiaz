@@ -15,7 +15,7 @@ export function SiteFooter() {
               className="h-10 w-auto"
             />
             <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-white/55">
-              Marketing strategy, execution, and applied AI for practices that want to grow
+              Marketing strategy, execution, and applied AI for businesses that want to grow
               without losing what makes them worth choosing.
             </p>
           </div>

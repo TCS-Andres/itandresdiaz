@@ -8,7 +8,7 @@ export function Paths() {
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-orange-600">Ways to work together</p>
           <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
-            Start where it makes sense for your practice.
+            Start where it makes sense for your business.
           </h2>
           <p className="lede mt-5">
             No single package everyone gets pushed into. What we build depends on where you are.

@@ -29,10 +29,10 @@ const jsonLd = {
   },
   address: { "@type": "PostalAddress", addressRegion: "FL", addressCountry: "US" },
   knowsAbout: [
-    "Dental practice marketing",
-    "Medical practice marketing",
-    "AI implementation for healthcare practices",
+    "Marketing strategy",
+    "AI implementation for small and mid sized business",
     "Fractional CMO services",
+    "Marketing automation",
     "Generative Engine Optimization",
   ],
 };

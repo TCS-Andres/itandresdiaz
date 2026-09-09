@@ -40,7 +40,11 @@ export function SiteNav() {
       }`}
     >
       <div className="container flex h-[72px] items-center justify-between gap-6">
-        <a href="#top" className="flex shrink-0 items-center" aria-label={`${site.name}, home`}>
+        <a
+          href="#top"
+          className="flex min-h-[44px] shrink-0 items-center"
+          aria-label={`${site.name}, home`}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/logo-white-text.svg"
@@ -56,7 +60,7 @@ export function SiteNav() {
             <a
               key={item.href}
               href={item.href}
-              className="font-display text-[15px] font-semibold text-white/75 transition-colors hover:text-white"
+              className="inline-flex min-h-[44px] items-center font-display text-[15px] font-semibold text-white/75 transition-colors hover:text-white"
             >
               {item.label}
             </a>
@@ -64,7 +68,7 @@ export function SiteNav() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a href="#contact" className="btn-primary hidden !px-6 !py-2.5 !text-sm sm:inline-flex">
+          <a href="#contact" className="btn-primary hidden min-h-[44px] !px-6 !py-2.5 !text-sm sm:inline-flex">
             Get in touch
           </a>
 

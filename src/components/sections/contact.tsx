@@ -89,7 +89,7 @@ export function Contact() {
                   href={site.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full border border-white/20 px-4 py-2 font-display text-sm font-semibold transition-colors hover:border-orange hover:text-orange"
+                  className="inline-flex min-h-[44px] items-center rounded-full border border-white/20 px-4 py-2 font-display text-sm font-semibold transition-colors hover:border-orange hover:text-orange"
                 >
                   LinkedIn
                 </a>
@@ -97,7 +97,7 @@ export function Contact() {
                   href={site.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full border border-white/20 px-4 py-2 font-display text-sm font-semibold transition-colors hover:border-orange hover:text-orange"
+                  className="inline-flex min-h-[44px] items-center rounded-full border border-white/20 px-4 py-2 font-display text-sm font-semibold transition-colors hover:border-orange hover:text-orange"
                 >
                   Instagram
                 </a>
@@ -105,7 +105,7 @@ export function Contact() {
                   href={site.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full border border-white/20 px-4 py-2 font-display text-sm font-semibold transition-colors hover:border-orange hover:text-orange"
+                  className="inline-flex min-h-[44px] items-center rounded-full border border-white/20 px-4 py-2 font-display text-sm font-semibold transition-colors hover:border-orange hover:text-orange"
                 >
                   {site.company}
                 </a>

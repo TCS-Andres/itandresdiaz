@@ -20,12 +20,12 @@ export function SiteFooter() {
             </p>
           </div>
 
-          <nav className="flex flex-wrap gap-x-7 gap-y-3" aria-label="Footer">
+          <nav className="flex flex-wrap gap-x-7 gap-y-1 lg:gap-y-3" aria-label="Footer">
             {nav.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="font-display text-[15px] font-semibold text-white/60 transition-colors hover:text-orange"
+                className="inline-flex min-h-[44px] items-center font-display text-[15px] font-semibold text-white/60 transition-colors hover:text-orange"
               >
                 {item.label}
               </a>
@@ -38,7 +38,10 @@ export function SiteFooter() {
             &copy; {new Date().getFullYear()} {site.company}. Built with excellence.
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <a href={`mailto:${site.email}`} className="transition-colors hover:text-orange">
+            <a
+              href={`mailto:${site.email}`}
+              className="inline-flex min-h-[44px] items-center transition-colors hover:text-orange"
+            >
               {site.email}
             </a>
             <span>{site.location}</span>

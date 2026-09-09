@@ -12,7 +12,7 @@ export function Process() {
           </h2>
         </Reveal>
 
-        <ol className="mt-14 grid gap-6 md:grid-cols-3">
+        <ol className="mt-14 grid gap-6 lg:grid-cols-3">
           {processSteps.map((item, i) => (
             <Reveal as="li" key={item.step} delay={i * 110}>
               <div className="relative h-full rounded-2xl border border-line bg-white p-7 shadow-soft">
@@ -33,7 +33,7 @@ export function Process() {
             <p className="eyebrow text-orange-600">How I operate</p>
           </Reveal>
 
-          <div className="mt-8 grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-x-8 gap-y-7 sm:grid-cols-2 xl:grid-cols-4">
             {values.map((value, i) => (
               <Reveal key={value.title} delay={i * 70}>
                 <div className="border-t-2 border-orange/70 pt-4">

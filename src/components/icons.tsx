@@ -94,3 +94,47 @@ export const SpinnerIcon = ({ className = "h-4 w-4", ...p }: P) => (
     <path d="M21 12a9 9 0 1 1-6.22-8.56" />
   </Icon>
 );
+
+export const SearchIcon = (p: P) => (
+  <Icon {...p}>
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.3-4.3" />
+  </Icon>
+);
+
+export const MegaphoneIcon = (p: P) => (
+  <Icon {...p}>
+    <path d="m3 11 18-5v12L3 14v-3z" />
+    <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+  </Icon>
+);
+
+export const UserPlusIcon = (p: P) => (
+  <Icon {...p}>
+    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M19 8v6M22 11h-6" />
+  </Icon>
+);
+
+export const GlobeIcon = (p: P) => (
+  <Icon strokeWidth={1.8} {...p}>
+    <circle cx="12" cy="12" r="10" />
+    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20" />
+  </Icon>
+);
+
+export const LinkedInIcon = (p: P) => (
+  <Icon strokeWidth={1.8} {...p}>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect width="4" height="12" x="2" y="9" />
+    <circle cx="4" cy="4" r="2" />
+  </Icon>
+);
+
+export const InstagramIcon = (p: P) => (
+  <Icon strokeWidth={1.8} {...p}>
+    <rect width="20" height="20" x="2" y="2" rx="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01" />
+  </Icon>
+);

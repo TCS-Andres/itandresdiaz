@@ -10,6 +10,18 @@
 
 export const summit = {
   event: "AI for Small Business Summit 2026",
+
+  /**
+   * Andres's personal profiles, as he gave them for this page. They differ from
+   * the business accounts in site.social, which the main site still uses.
+   */
+  links: {
+    email: "andres@mycreativestrategist.com",
+    linkedin: "https://www.linkedin.com/in/andresediaz/",
+    instagram: "https://www.instagram.com/itsandresediaz/",
+    instagramHandle: "@itsandresediaz",
+  },
+
   metaTitle: "Let's find your first hire | Andres Diaz",
   metaDescription:
     "A free 30-minute call to spot the bottlenecks in your business and the AI that can take them off your plate.",

@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { site } from "@/lib/site";
+import { summit } from "@/lib/summit";
 
 /**
  * "Save my contact" on /summit. A vCard built from the same details as the rest
@@ -30,11 +31,11 @@ export async function GET() {
     `FN:${esc(site.name)}`,
     `ORG:${esc(site.company)}`,
     `TITLE:${esc(site.role)}`,
-    `EMAIL;TYPE=INTERNET,WORK:${site.email}`,
+    `EMAIL;TYPE=INTERNET,WORK:${summit.links.email}`,
     `URL:${site.url}`,
     `URL;TYPE=WORK:${site.website}`,
-    `X-SOCIALPROFILE;TYPE=linkedin:${site.social.linkedin}`,
-    `X-SOCIALPROFILE;TYPE=instagram:${site.social.instagram}`,
+    `X-SOCIALPROFILE;TYPE=linkedin:${summit.links.linkedin}`,
+    `X-SOCIALPROFILE;TYPE=instagram:${summit.links.instagram}`,
     `NOTE:${esc(`Met at the AI for Small Business Summit 2026. Book a free 30-minute call at ${site.url}/summit`)}`,
     `PHOTO;ENCODING=b;TYPE=JPEG:${photo.toString("base64")}`,
     "END:VCARD",

@@ -9,10 +9,12 @@ import {
 import { site } from "@/lib/site";
 import { CONTACT_CARD_PATH, summit } from "@/lib/summit";
 
+const { links } = summit;
+
 const ROWS = [
-  { icon: MailIcon, label: site.email, href: `mailto:${site.email}`, external: false },
-  { icon: LinkedInIcon, label: "LinkedIn", href: site.social.linkedin, external: true },
-  { icon: InstagramIcon, label: "@mycreativestrategist", href: site.social.instagram, external: true },
+  { icon: MailIcon, label: links.email, href: `mailto:${links.email}`, external: false },
+  { icon: LinkedInIcon, label: "LinkedIn", href: links.linkedin, external: true },
+  { icon: InstagramIcon, label: links.instagramHandle, href: links.instagram, external: true },
   { icon: GlobeIcon, label: "itsandresdiaz.com", href: "/", external: false },
 ];
 

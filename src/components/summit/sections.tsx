@@ -251,8 +251,8 @@ export function SummitStayInTouch() {
           <p className="eyebrow text-orange">{stayInTouch.eyebrow}</p>
           <h2 className="mt-3 text-3xl sm:text-4xl">{stayInTouch.title}</h2>
           <p className="mt-3 text-white/60">
-            <a href={`mailto:${site.email}`} className="underline-offset-4 hover:text-orange hover:underline">
-              {site.email}
+            <a href={`mailto:${summit.links.email}`} className="underline-offset-4 hover:text-orange hover:underline">
+              {summit.links.email}
             </a>
           </p>
         </div>
@@ -261,11 +261,11 @@ export function SummitStayInTouch() {
             <UserPlusIcon className="h-4 w-4" />
             {summit.hero.secondaryCta}
           </a>
-          <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" className={pill}>
+          <a href={summit.links.linkedin} target="_blank" rel="noopener noreferrer" className={pill}>
             <LinkedInIcon className="h-4 w-4" />
             LinkedIn
           </a>
-          <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className={pill}>
+          <a href={summit.links.instagram} target="_blank" rel="noopener noreferrer" className={pill}>
             <InstagramIcon className="h-4 w-4" />
             Instagram
           </a>

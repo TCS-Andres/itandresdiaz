@@ -13,10 +13,8 @@ export function MasterBrain() {
       <div className="container relative grid gap-12 py-20 md:py-28 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
         <Reveal>
           <p className="eyebrow text-gold">{masterBrain.eyebrow}</p>
-          <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[2.6rem] lg:leading-[1.12]">
-            {masterBrain.title}
-          </h2>
-          <p className="mt-6 font-display text-lg font-semibold leading-snug text-orange">
+          <h2 className="headline mt-4">{masterBrain.title}</h2>
+          <p className="mt-6 font-display text-xl font-semibold leading-snug text-orange md:text-2xl">
             {masterBrain.callout}
           </p>
         </Reveal>
@@ -29,7 +27,7 @@ export function MasterBrain() {
           </div>
 
           <div className="mt-9 rounded-2xl border border-white/12 bg-white/[0.05] p-6">
-            <p className="eyebrow text-white/45">The Master Brain captures</p>
+            <p className="eyebrow text-white/45">{masterBrain.capturesLabel}</p>
             <ul className="mt-4 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
               {masterBrain.captures.map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-[15px] leading-snug text-white/80">

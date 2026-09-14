@@ -53,7 +53,7 @@ export function MobileCta() {
           Free guide
         </a>
         <a href="#contact" className="btn-primary flex-[1.4] !px-4 !py-3 !text-sm">
-          Let us talk
+          {"Let's talk"}
         </a>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { CalendarXIcon, EyeOffIcon, PhoneMissedIcon, SparklesIcon } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
-import { problems } from "@/lib/site";
+import { problems, sections } from "@/lib/site";
 
 /** One icon per problem, in the same order as `problems` in site.ts. */
 const ICONS = [PhoneMissedIcon, EyeOffIcon, CalendarXIcon, SparklesIcon];
@@ -10,14 +10,9 @@ export function Gap() {
     <section id="gap" className="section bg-cream">
       <div className="container">
         <Reveal className="max-w-2xl">
-          <p className="eyebrow text-orange-600">The gap</p>
-          <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
-            You are excellent at what you do. That is not the problem.
-          </h2>
-          <p className="lede mt-5">
-            The businesses I work with are rarely struggling with the quality of what they
-            do. It is usually one of these instead.
-          </p>
+          <p className="eyebrow text-orange-600">{sections.gap.eyebrow}</p>
+          <h2 className="headline mt-4">{sections.gap.title}</h2>
+          <p className="lede mt-5">{sections.gap.lede}</p>
         </Reveal>
 
         <div className="mt-14 grid gap-5 md:grid-cols-2">
@@ -45,9 +40,9 @@ export function Gap() {
         </div>
 
         <Reveal delay={120}>
-          <p className="mt-12 text-center font-display text-lg font-semibold text-navy-400">
-            None of these get fixed by posting more.{" "}
-            <span className="text-navy">They get fixed with a system.</span>
+          <p className="mt-12 text-center font-display text-xl font-semibold text-navy-400 md:text-2xl">
+            {sections.gap.closer}{" "}
+            <span className="text-navy">{sections.gap.closerStrong}</span>
           </p>
         </Reveal>
       </div>

@@ -2,10 +2,11 @@
  * Every piece of copy and contact detail on the page lives here so the whole
  * landing page can be re-pointed or reworded without touching components.
  *
- * House style: short. Two sentences per block is the ceiling. This page is read
- * on a phone by a busy owner between meetings, so anything that can be cut, gets
- * cut. Keep the language industry neutral: the audience is any business owner,
- * not one vertical.
+ * House style: short. Headlines are a few bold words that still say the value
+ * plainly. Two sentences per block is the ceiling. Contractions are fine and
+ * encouraged: the voice is a trusted friend who happens to be an expert, not a
+ * brochure. This page is read on a phone by a busy owner between meetings, so
+ * anything that can be cut, gets cut. Keep the language industry neutral.
  */
 
 /**
@@ -38,11 +39,24 @@ export const site = {
   metaTitle: "Andres Diaz | Marketing Strategy and AI for Growing Businesses",
   metaDescription:
     "I help business owners get more people to know them, trust them, and do business with them, by combining creative strategy, marketing, and applied AI.",
+  footerTagline:
+    "Strategy, marketing, and AI for businesses that want to grow without losing what makes them worth choosing.",
 };
 
 export const hero = {
-  eyebrow: "For business owners who are ready to grow",
-  lede: "I am Andres Diaz. I bring strategy, marketing, and AI together so your business becomes the obvious choice in your market.",
+  eyebrow: "For owners ready to grow",
+  /**
+   * Each line draws its orange underline in turn. The full signature line,
+   * "know you, trust you, and do business with you", lives in the lede.
+   */
+  headline: [
+    { before: "Be ", ink: "known", after: "." },
+    { before: "Be ", ink: "trusted", after: "." },
+    { before: "Be ", ink: "chosen", after: "." },
+  ],
+  lede: "I'm Andres Diaz. I bring strategy, marketing, and AI together to get more people to know you, trust you, and do business with you.",
+  primaryCta: "Let's grow your business",
+  secondaryCta: "Get the free guide",
   /** Short reassurances under the buttons. Every one is already stated elsewhere on the page. */
   proof: [
     "You work with me directly",
@@ -73,22 +87,73 @@ export const industries = [
   "B2B and manufacturing",
 ];
 
+/** Section intros: eyebrow, headline, and one short supporting line. */
+export const sections = {
+  gap: {
+    eyebrow: "The gap",
+    title: "Great work isn't enough.",
+    lede: "Most owners I meet don't have a quality problem. They have one of these.",
+    closer: "Posting more won't fix it.",
+    closerStrong: "A system will.",
+  },
+  about: {
+    eyebrow: "Who you work with",
+    title: "No handoffs. You work with me.",
+    body: [
+      "I run The Creative Strategist out of South Florida as a fractional CMO and AI specialist, for businesses that want to grow without building a marketing department.",
+      "I work with owners, not committees. Your marketing asks people to trust you with their money, their home, or their health. That deserves more than a template.",
+    ],
+    quote: "Marketing is an investment, not an expense.",
+    quoteBody:
+      "Think of your business as an airplane. Overhead is the body, and marketing and sales are the engines. Spend on the body and it gets heavier. Spend on the engines and it goes farther.",
+  },
+  services: {
+    eyebrow: "What I do",
+    title: "Strategy, marketing, and AI. One partner.",
+    lede: "Most businesses hire three vendors who never talk to each other. I bring it all together.",
+  },
+  paths: {
+    eyebrow: "Ways to work together",
+    title: "Start where you need it most.",
+    lede: "No cookie cutter packages. We build around where you are today.",
+    footnote: "We scope it together, and you see the full investment before you commit.",
+    cta: "Talk about this option",
+  },
+  process: {
+    eyebrow: "How it works",
+    title: "It starts with a conversation.",
+    valuesEyebrow: "How I operate",
+  },
+  faq: {
+    eyebrow: "FAQ",
+    title: "Fair questions. Straight answers.",
+    lede: "Don't see yours here? Just ask me.",
+    primaryCta: "Ask me directly",
+    secondaryCta: "Send an email",
+  },
+  contact: {
+    eyebrow: "Get in touch",
+    title: "Ready to grow? Let's talk.",
+    lede: "No pitch, no pressure. Just an honest conversation about where you are and whether I'm the right person to help.",
+  },
+};
+
 /** The problem, framed the way an owner actually feels it. */
 export const problems = [
   {
-    title: "The phone rings and nobody picks up",
-    body: "Your team is busy with a customer. That caller does not leave a message. They call your competitor instead.",
+    title: "Missed calls, lost customers",
+    body: "Your team is busy and the phone rings out. That caller won't leave a message. They'll call someone else.",
   },
   {
-    title: "You are the best kept secret in town",
+    title: "The best kept secret in town",
     body: "Your customers love you. The people who still need you have never heard your name.",
   },
   {
-    title: "Marketing happens whenever there is time",
-    body: "A post here, an ad there, a website from three years ago. Effort without a plan, so none of it adds up.",
+    title: "Marketing without a plan",
+    body: "A post here, an ad there, a website from three years ago. None of it adds up.",
   },
   {
-    title: "AI feels like one more thing you are behind on",
+    title: "Behind on AI",
     body: "Everyone says you should be using it. Nobody has shown you what it actually does for a business like yours.",
   },
 ];
@@ -122,7 +187,7 @@ export const pillars = [
   {
     number: "03",
     title: "AI Implementation",
-    tagline: "The systems that catch what you miss",
+    tagline: "Systems that catch what you miss",
     body: "Where most owners feel it fastest. AI answers the calls you miss and follows up with every lead.",
     items: [
       "Voice agents for missed calls",
@@ -161,14 +226,14 @@ export const paths = [
   {
     title: "Start with AI",
     subtitle: "A focused project",
-    body: "We find where you are leaking the most opportunity, usually missed calls, and build the system that closes it.",
+    body: "We find where you're losing the most opportunity, usually missed calls, and build the system that closes the gap.",
     best: "Best if you want a clear win first.",
     interest: interests[0],
   },
   {
     title: "Marketing partnership",
     subtitle: "An ongoing retainer",
-    body: "I lead the plan, my team runs the work, and AI is built in from the start rather than bolted on later.",
+    body: "I lead the plan, my team does the work, and AI is built in from day one instead of bolted on later.",
     best: "Best if marketing keeps falling to the bottom of your list.",
     interest: interests[1],
     featured: true,
@@ -176,7 +241,7 @@ export const paths = [
   {
     title: "Fractional CMO",
     subtitle: "Marketing leadership, part time",
-    body: "For companies that need a marketing leader at the table without carrying a full in house department.",
+    body: "A marketing leader at the table, without the cost of a full in house department.",
     best: "Best if you have a team but nobody directing it.",
     interest: interests[3],
   },
@@ -187,55 +252,56 @@ export const processSteps = [
   {
     step: "01",
     title: "We talk",
-    body: "You tell me what is working and what is not. I tell you honestly whether I am the right fit.",
+    body: "You tell me what's working and what isn't. I tell you honestly whether I'm the right fit.",
   },
   {
     step: "02",
     title: "I build the plan",
-    body: "A clear recommendation on what to fix first and what it takes. No hundred page deck.",
+    body: "A clear call on what to fix first and what it takes. No hundred page deck.",
   },
   {
     step: "03",
     title: "We build it together",
-    body: "My team executes while you stay focused on running the business. Regular reporting and a direct line to me.",
+    body: "My team does the work while you run your business. You get regular reporting and a direct line to me.",
   },
 ];
 
 /** The Master Brain differentiator. */
 export const masterBrain = {
   eyebrow: "The part most people skip",
-  title: "AI without an identity is a liability",
+  title: "Your AI should sound like you.",
   body: [
-    "Most businesses that try AI alone end up sounding like everyone else. It technically works, and it quietly costs you the trust you spent years building.",
-    "So before any tool goes live, I build you a Master Brain: one document that captures how your business actually sounds and runs. Every AI system I build for you is grounded in it.",
+    "Most businesses that try AI on their own end up sounding like everyone else. It works, and it quietly costs you the trust you spent years building.",
+    "So before any tool goes live, I build your Master Brain: one document that captures how your business sounds and runs. Every AI system I build for you runs on it.",
   ],
   callout: "Identity first. Tools second.",
+  capturesLabel: "The Master Brain captures",
   captures: [
     "Your voice and tone",
     "Your values and standards",
     "Your products and services",
     "Your ideal customer",
     "How your business runs",
-    "What you will never say",
+    "What you'd never say",
   ],
 };
 
 export const values = [
   {
     title: "I do things in excellence",
-    body: "It comes from my faith. I do not hand you work I would not put my name on.",
+    body: "It comes from my faith. I won't hand you work I wouldn't put my name on.",
   },
   {
     title: "Integrity over revenue",
-    body: "If something else serves you better, I will say so, even when it costs me the work.",
+    body: "If something else serves you better, I'll tell you, even when it costs me the work.",
   },
   {
     title: "Honest about outcomes",
-    body: "I will not promise you specific numbers. I guarantee the systems and the standard of the work.",
+    body: "I won't promise you specific numbers. I guarantee the systems and the standard of the work.",
   },
   {
     title: "A partner, not a vendor",
-    body: "I want to be invested in where your business is going.",
+    body: "I'm genuinely invested in you and where your business is going.",
   },
 ];
 
@@ -246,27 +312,27 @@ export const values = [
 export const faqs = [
   {
     q: "How much does it cost?",
-    a: "It depends on what we build, so there is no one price for everyone. We scope it together, and you see the full investment before you commit to anything.",
+    a: "It depends on what we build, so there's no one price for everyone. We scope it together, and you see the full investment before you commit to anything.",
   },
   {
     q: "Do you work with businesses like mine?",
     a: "Most likely. I work with owners across industries, from home services and professional services to retail, real estate, and B2B.",
   },
   {
-    q: "I am not a tech person. Can I still use AI?",
+    q: "I'm not a tech person. Can I still use AI?",
     a: "Yes. My team and I build and run the systems, so you stay focused on running the business.",
   },
   {
     q: "Will AI make my business sound like a robot?",
-    a: "Not when it is built on your Master Brain. Every AI system I build for you is grounded in how your business actually sounds and runs.",
+    a: "Not when it's built on your Master Brain. Every AI system I build for you is grounded in how your business actually sounds and runs.",
   },
   {
     q: "Can you guarantee results?",
-    a: "I will not promise you specific numbers. I guarantee the systems and the standard of the work.",
+    a: "I won't promise you specific numbers. I guarantee the systems and the standard of the work.",
   },
   {
     q: "Do you only work in South Florida?",
-    a: "I am based in South Florida and work with businesses nationwide.",
+    a: "I'm based in South Florida and work with businesses nationwide.",
   },
   {
     q: "What happens after I reach out?",
@@ -280,12 +346,14 @@ export const GUIDE_FILENAME = "The Complete Guide to Marketing Channels.pdf";
 
 /** The free guide offered as the secondary call to action. */
 export const guide = {
-  eyebrow: "Free resource",
+  eyebrow: "Free guide",
+  /** The hook. `title` is the guide's real name and sits right under it. */
+  headline: "Stop guessing where to market.",
   title: "The Complete Guide to Marketing Channels",
-  lede: "Every channel worth your time, and how to build a creative strategy around them. Eleven categories, more than fifty channels, with real examples from real small businesses.",
-  pullQuote: "You do not need every channel. Nobody does.",
+  lede: "Every channel worth your time, with real small business examples and a simple way to pick the few that fit you.",
+  pullQuote: "You don't need every channel. Nobody does.",
   pullBody:
-    "The guide is a menu, not a checklist. Pick one channel to be found, one to build relationships, and one to accelerate. Do those three with excellence before you add a fourth.",
+    "Pick one channel to get found, one to build relationships, and one to grow faster. Do those three with excellence before you add a fourth.",
   categories: [
     "Owned Digital",
     "Organic Social",
@@ -299,6 +367,7 @@ export const guide = {
     "Experiential and Guerrilla",
     "Emerging and AI Powered",
   ],
+  categoriesLabel: "What's inside",
   facts: ["22 pages", "11 categories", "50+ channels", "Free"],
-  formNote: "I will send it straight to your screen. No sequence, no list you did not ask to be on.",
+  formNote: "It opens right on your screen. No email sequence, no list you didn't ask to join.",
 };

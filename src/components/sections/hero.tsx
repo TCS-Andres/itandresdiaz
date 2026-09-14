@@ -33,29 +33,34 @@ export function Hero() {
           </p>
 
           {/*
-            The mission line underlines itself in order: know, trust, do business.
-            The text is static and fully readable the whole time; only the rule animates.
+            One line per step of the promise, each underlining itself in turn:
+            known, then trusted, then chosen. The words never move; only the rule animates.
           */}
-          <h1 className="mt-7 text-[2.6rem] leading-[1.08] sm:text-5xl lg:text-[3.9rem]">
-            Get more people to{" "}
-            <span className="ink whitespace-nowrap [animation-delay:250ms]">know you</span>,{" "}
-            <span className="ink whitespace-nowrap [animation-delay:900ms]">trust you</span>, and{" "}
-            <span className="ink [animation-delay:1550ms]">do business with you</span>.
+          <h1 className="mt-7 text-[3.1rem] leading-[1.02] sm:text-6xl lg:text-[4.6rem]">
+            {hero.headline.map((line, i) => (
+              <span key={line.ink} className="block">
+                {line.before}
+                <span className="ink" style={{ animationDelay: `${250 + i * 550}ms` }}>
+                  {line.ink}
+                </span>
+                {line.after}{" "}
+              </span>
+            ))}
           </h1>
 
-          <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/70">
+          <p className="mt-7 max-w-lg text-lg leading-relaxed text-white/70">
             {hero.lede}
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="#contact" className="btn-primary group w-full sm:w-auto">
-              Let us talk about your business
+              {hero.primaryCta}
               <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">
                 &rarr;
               </span>
             </a>
             <a href="#guide" className="btn-ghost-dark w-full sm:w-auto">
-              Get the free marketing guide
+              {hero.secondaryCta}
             </a>
           </div>
 

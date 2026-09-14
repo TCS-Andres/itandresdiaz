@@ -42,10 +42,9 @@ export function Guide() {
 
         <Reveal delay={90} className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
           <p className="eyebrow text-orange">{guide.eyebrow}</p>
-          <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[2.6rem] lg:leading-[1.12]">
-            {guide.title}
-          </h2>
-          <p className="mt-5 text-lg leading-relaxed text-white/70">{guide.lede}</p>
+          <h2 className="headline mt-4">{guide.headline}</h2>
+          <p className="mt-4 font-display text-lg font-bold text-orange md:text-xl">{guide.title}</p>
+          <p className="mt-3 text-lg leading-relaxed text-white/70">{guide.lede}</p>
 
           <ul className="mt-6 flex flex-wrap gap-2">
             {guide.facts.map((fact) => (
@@ -62,7 +61,7 @@ export function Guide() {
             <GuideForm />
           </div>
 
-          <p className="eyebrow mt-8 text-white/40">What is inside</p>
+          <p className="eyebrow mt-8 text-white/40">{guide.categoriesLabel}</p>
           <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
             {guide.categories.map((category) => (
               <li

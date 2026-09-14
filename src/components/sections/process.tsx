@@ -1,23 +1,21 @@
 import { ProcessTimeline } from "@/components/process-timeline";
 import { Reveal } from "@/components/reveal";
-import { processSteps, values } from "@/lib/site";
+import { processSteps, sections, values } from "@/lib/site";
 
 export function Process() {
   return (
     <section id="process" className="section bg-cream">
       <div className="container">
         <Reveal className="max-w-2xl">
-          <p className="eyebrow text-orange-600">How it works</p>
-          <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
-            Three steps. The first one is just a conversation.
-          </h2>
+          <p className="eyebrow text-orange-600">{sections.process.eyebrow}</p>
+          <h2 className="headline mt-4">{sections.process.title}</h2>
         </Reveal>
 
         <ProcessTimeline steps={processSteps} />
 
         <div className="mt-20">
           <Reveal>
-            <p className="eyebrow text-orange-600">How I operate</p>
+            <p className="eyebrow text-orange-600">{sections.process.valuesEyebrow}</p>
           </Reveal>
 
           <div className="mt-8 grid gap-x-8 gap-y-7 sm:grid-cols-2 xl:grid-cols-4">

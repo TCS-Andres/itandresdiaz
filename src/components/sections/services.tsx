@@ -1,21 +1,16 @@
 import { GlowBorder } from "@/components/glow-border";
 import { CheckIcon } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
-import { pillars } from "@/lib/site";
+import { pillars, sections } from "@/lib/site";
 
 export function Services() {
   return (
     <section id="services" className="section bg-cream">
       <div className="container">
         <Reveal className="max-w-2xl">
-          <p className="eyebrow text-orange-600">What I do</p>
-          <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
-            Three disciplines, built to work as one.
-          </h2>
-          <p className="lede mt-5">
-            Most businesses hire these separately and end up with three vendors who never
-            talk to each other. I bring them together.
-          </p>
+          <p className="eyebrow text-orange-600">{sections.services.eyebrow}</p>
+          <h2 className="headline mt-4">{sections.services.title}</h2>
+          <p className="lede mt-5">{sections.services.lede}</p>
         </Reveal>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">

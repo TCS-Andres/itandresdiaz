@@ -1,7 +1,7 @@
 import { ContactForm } from "@/components/contact-form";
 import { CalendarIcon, MailIcon } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
-import { site } from "@/lib/site";
+import { sections, site } from "@/lib/site";
 
 export function Contact() {
   return (
@@ -14,14 +14,9 @@ export function Contact() {
 
       <div className="container relative">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow text-orange">Let us talk</p>
-          <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
-            Tell me about your business.
-          </h2>
-          <p className="mt-5 text-lg leading-relaxed text-white/70">
-            No pitch and no pressure. Just a conversation about where you are and whether I am
-            the right person to help.
-          </p>
+          <p className="eyebrow text-orange">{sections.contact.eyebrow}</p>
+          <h2 className="headline mt-4">{sections.contact.title}</h2>
+          <p className="mt-5 text-lg leading-relaxed text-white/70">{sections.contact.lede}</p>
         </Reveal>
 
         <div className="mt-14 grid gap-8 lg:grid-cols-[1.5fr_1fr] lg:gap-12">

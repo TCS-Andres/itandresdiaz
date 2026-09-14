@@ -103,7 +103,7 @@ export function ContactForm() {
       // plain sentence and a way to reach Andres, never raw API wording.
       console.error("[contact] submission failed:", err);
       setStatus("error");
-      setError("Sorry, that did not go through.");
+      setError("Sorry, that didn't go through.");
     }
   }
 
@@ -117,8 +117,9 @@ export function ContactForm() {
           Thank you. It came through.
         </h3>
         <p className="mx-auto mt-3 max-w-md text-navy-400">
-          I read every one of these myself. You will hear back from me within one business day.
-          If it is easier to just grab time on my calendar, that link is right here.
+          {
+            "I read every one of these myself, and you'll hear back within one business day. Rather talk sooner? Grab a time on my calendar."
+          }
         </p>
         <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
@@ -254,7 +255,7 @@ export function ContactForm() {
           id="message"
           name="message"
           rows={5}
-          placeholder="A few sentences is plenty. What is working, what is not, and what you would like to change."
+          placeholder="A few sentences is plenty. What's working, what isn't, and what you'd like to change."
           className="field resize-y"
         />
       </div>
@@ -269,7 +270,7 @@ export function ContactForm() {
           <a href={`mailto:${site.email}`} className="font-bold text-sky underline">
             {site.email}
           </a>{" "}
-          and I will get right back to you.
+          {"and I'll get right back to you."}
         </div>
       )}
 
@@ -289,7 +290,7 @@ export function ContactForm() {
           )}
         </button>
         <p className="text-center text-[13px] leading-relaxed text-navy-300 sm:text-left">
-          I read every message myself. No sales sequence, no list you did not ask to be on.
+          {"I read every message myself. No sales sequence, no list you didn't ask to join."}
         </p>
       </div>
     </form>

@@ -46,6 +46,11 @@
     @apply font-display text-xs font-bold uppercase tracking-[0.18em];
   }
 
+  /* Section headline. Kept to a few words, so it can run big. */
+  .headline {
+    @apply text-[2.15rem] leading-[1.06] sm:text-5xl lg:text-[3.4rem] lg:leading-[1.04];
+  }
+
   .lede {
     @apply text-lg leading-relaxed text-navy-400 md:text-xl;
   }

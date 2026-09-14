@@ -1,20 +1,18 @@
 import { GlowBorder } from "@/components/glow-border";
 import { InterestLink } from "@/components/interest-link";
 import { Reveal } from "@/components/reveal";
-import { paths } from "@/lib/site";
+import { paths, sections } from "@/lib/site";
+
+const intro = sections.paths;
 
 export function Paths() {
   return (
     <section className="section bg-white">
       <div className="container">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow text-orange-600">Ways to work together</p>
-          <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
-            Start where it makes sense for your business.
-          </h2>
-          <p className="lede mt-5">
-            No single package everyone gets pushed into. What we build depends on where you are.
-          </p>
+          <p className="eyebrow text-orange-600">{intro.eyebrow}</p>
+          <h2 className="headline mt-4">{intro.title}</h2>
+          <p className="lede mt-5">{intro.lede}</p>
         </Reveal>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
@@ -61,7 +59,7 @@ export function Paths() {
                     path.featured ? "text-orange" : "text-orange-600"
                   }`}
                 >
-                  Talk about this option
+                  {intro.cta}
                   <span aria-hidden="true" className="transition-transform duration-200 group-hover/link:translate-x-1">
                     &rarr;
                   </span>
@@ -73,7 +71,7 @@ export function Paths() {
 
         <Reveal delay={140}>
           <p className="mx-auto mt-12 max-w-xl text-center leading-relaxed text-navy-400">
-            We scope it together, and you see the full investment before you commit to anything.
+            {intro.footnote}
           </p>
         </Reveal>
       </div>

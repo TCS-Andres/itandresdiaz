@@ -1,32 +1,40 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
-import { site, WEB3FORMS_ENDPOINT, WEB3FORMS_KEY } from "@/lib/site";
-
-const BUSINESS_TYPES = [
-  "Home services or trades",
-  "Professional services",
-  "Health and wellness",
-  "Restaurant or hospitality",
-  "Retail or ecommerce",
-  "Real estate or construction",
-  "B2B, manufacturing, or logistics",
-  "Something else",
-];
-
-const INTERESTS = [
-  "AI implementation, missed calls and follow up",
-  "Marketing help, ongoing support",
-  "Website or rebrand project",
-  "Fractional CMO leadership",
-  "Not sure yet, I want to talk it through",
-];
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { CheckIcon, SpinnerIcon } from "@/components/icons";
+import { INTEREST_EVENT } from "@/components/interest-link";
+import {
+  businessTypes,
+  interests,
+  site,
+  WEB3FORMS_ENDPOINT,
+  WEB3FORMS_KEY,
+} from "@/lib/site";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
+  const thanksRef = useRef<HTMLHeadingElement>(null);
+
+  // A "Talk about this option" link elsewhere on the page preselects its option.
+  useEffect(() => {
+    const onInterest = (event: Event) => {
+      const choice = (event as CustomEvent<string>).detail;
+      const group = formRef.current?.elements.namedItem("interest");
+      if (group instanceof RadioNodeList) group.value = choice;
+    };
+    window.addEventListener(INTEREST_EVENT, onInterest);
+    return () => window.removeEventListener(INTEREST_EVENT, onInterest);
+  }, []);
+
+  // The form is swapped for the thank-you panel, so move focus there or a
+  // keyboard or screen reader user is left on a button that no longer exists.
+  useEffect(() => {
+    if (status === "sent") thanksRef.current?.focus();
+  }, [status]);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -102,21 +110,12 @@ export function ContactForm() {
   if (status === "sent") {
     return (
       <div className="rounded-2xl border border-orange/30 bg-white p-8 text-center shadow-soft md:p-12">
-        <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-orange/15">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#F28D3D"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-7 w-7"
-            aria-hidden="true"
-          >
-            <path d="M20 6 9 17l-5-5" />
-          </svg>
+        <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-orange/15 text-orange">
+          <CheckIcon className="h-7 w-7" strokeWidth={2.5} />
         </div>
-        <h3 className="mt-5 text-2xl">Thank you. It came through.</h3>
+        <h3 ref={thanksRef} tabIndex={-1} className="mt-5 text-2xl focus:outline-none">
+          Thank you. It came through.
+        </h3>
         <p className="mx-auto mt-3 max-w-md text-navy-400">
           I read every one of these myself. You will hear back from me within one business day.
           If it is easier to just grab time on my calendar, that link is right here.
@@ -144,8 +143,8 @@ export function ContactForm() {
 
   return (
     <form
+      ref={formRef}
       onSubmit={onSubmit}
-      noValidate={false}
       className="relative rounded-2xl border border-line bg-white p-6 shadow-soft md:p-9"
     >
       {/*
@@ -217,7 +216,7 @@ export function ContactForm() {
           />
         </div>
 
-        <div>
+        <div className="sm:col-span-2">
           <label className="label" htmlFor="businessType">
             Type of business
           </label>
@@ -225,23 +224,7 @@ export function ContactForm() {
             <option value="" disabled>
               Select one
             </option>
-            {BUSINESS_TYPES.map((t) => (
-              <option key={t} value={t}>
-                {t}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div>
-          <label className="label" htmlFor="interest">
-            What brought you here
-          </label>
-          <select id="interest" name="interest" className="field" defaultValue="">
-            <option value="" disabled>
-              Select one
-            </option>
-            {INTERESTS.map((t) => (
+            {businessTypes.map((t) => (
               <option key={t} value={t}>
                 {t}
               </option>
@@ -249,6 +232,19 @@ export function ContactForm() {
           </select>
         </div>
       </div>
+
+      {/* One tap instead of opening a dropdown, which matters most on a phone. */}
+      <fieldset className="mt-5">
+        <legend className="label">What brought you here</legend>
+        <div className="flex flex-wrap gap-2">
+          {interests.map((t) => (
+            <label key={t} className="relative">
+              <input type="radio" name="interest" value={t} className="peer sr-only" />
+              <span className="chip">{t}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
 
       <div className="mt-5">
         <label className="label" htmlFor="message">
@@ -283,7 +279,14 @@ export function ContactForm() {
           disabled={status === "sending"}
           className="btn-primary w-full shrink-0 whitespace-nowrap disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
         >
-          {status === "sending" ? "Sending..." : "Send it over"}
+          {status === "sending" ? (
+            <>
+              <SpinnerIcon />
+              Sending...
+            </>
+          ) : (
+            "Send it over"
+          )}
         </button>
         <p className="text-center text-[13px] leading-relaxed text-navy-300 sm:text-left">
           I read every message myself. No sales sequence, no list you did not ask to be on.

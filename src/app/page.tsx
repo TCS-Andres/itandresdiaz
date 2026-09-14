@@ -9,8 +9,10 @@ import { MasterBrain } from "@/components/sections/master-brain";
 import { Paths } from "@/components/sections/paths";
 import { Process } from "@/components/sections/process";
 import { Guide } from "@/components/sections/guide";
+import { Faq } from "@/components/sections/faq";
 import { Contact } from "@/components/sections/contact";
-import { site } from "@/lib/site";
+import { MobileCta } from "@/components/mobile-cta";
+import { faqs, site } from "@/lib/site";
 
 /** Person + ProfessionalService markup so search and AI engines can read the page. */
 const jsonLd = {
@@ -38,12 +40,27 @@ const jsonLd = {
   ],
 };
 
+/** The FAQ section as structured data, so search and AI answers can quote it directly. */
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+
 export default function Page() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <SiteNav />
       <main id="main">
@@ -56,9 +73,11 @@ export default function Page() {
         <Paths />
         <Process />
         <Guide />
+        <Faq />
         <Contact />
       </main>
       <SiteFooter />
+      <MobileCta />
     </>
   );
 }

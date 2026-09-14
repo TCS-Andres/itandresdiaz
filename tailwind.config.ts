@@ -42,6 +42,9 @@ const config: Config = {
         sans: ["var(--font-body)", "system-ui", "sans-serif"],
         display: ["var(--font-display)", "var(--font-body)", "system-ui", "sans-serif"],
       },
+      // 12 is not in Tailwind's default opacity scale, so classes like
+      // border-white/12 silently compiled to nothing (a bright gray border).
+      opacity: { 12: "0.12" },
       letterSpacing: { tightest: "-0.035em", tighter: "-0.022em" },
       borderRadius: { DEFAULT: "10px", lg: "14px", xl: "18px", "2xl": "24px", "3xl": "32px" },
       boxShadow: {

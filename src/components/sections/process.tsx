@@ -1,3 +1,4 @@
+import { ProcessTimeline } from "@/components/process-timeline";
 import { Reveal } from "@/components/reveal";
 import { processSteps, values } from "@/lib/site";
 
@@ -12,21 +13,7 @@ export function Process() {
           </h2>
         </Reveal>
 
-        <ol className="mt-14 grid gap-6 lg:grid-cols-3">
-          {processSteps.map((item, i) => (
-            <Reveal as="li" key={item.step} delay={i * 110}>
-              <div className="relative h-full rounded-2xl border border-line bg-white p-7 shadow-soft">
-                <div className="flex items-center gap-4">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-navy font-display text-sm font-bold text-orange">
-                    {item.step}
-                  </span>
-                  <h3 className="text-xl">{item.title}</h3>
-                </div>
-                <p className="mt-5 leading-relaxed text-navy-400">{item.body}</p>
-              </div>
-            </Reveal>
-          ))}
-        </ol>
+        <ProcessTimeline steps={processSteps} />
 
         <div className="mt-20">
           <Reveal>

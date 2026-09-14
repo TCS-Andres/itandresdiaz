@@ -1,3 +1,5 @@
+import { GlowBorder } from "@/components/glow-border";
+import { InterestLink } from "@/components/interest-link";
 import { Reveal } from "@/components/reveal";
 import { paths } from "@/lib/site";
 
@@ -19,12 +21,13 @@ export function Paths() {
           {paths.map((path, i) => (
             <Reveal key={path.title} delay={i * 110}>
               <article
-                className={`flex h-full flex-col rounded-2xl border p-7 transition-all duration-300 hover:-translate-y-1.5 ${
+                className={`relative flex h-full flex-col rounded-2xl border p-7 transition-all duration-300 hover:-translate-y-1.5 ${
                   path.featured
                     ? "border-orange bg-navy text-white shadow-elevated"
-                    : "border-line bg-cream shadow-soft hover:border-orange/40 hover:shadow-elevated"
+                    : "border-line bg-cream shadow-soft hover:shadow-elevated"
                 }`}
               >
+                <GlowBorder />
                 {path.featured && (
                   <p className="eyebrow mb-4 inline-flex w-fit rounded-full bg-orange px-3 py-1.5 text-navy">
                     Most common
@@ -52,6 +55,17 @@ export function Paths() {
                 >
                   {path.best}
                 </p>
+                <InterestLink
+                  interest={path.interest}
+                  className={`group/link mt-4 inline-flex min-h-[44px] w-fit items-center gap-2 font-display text-[15px] font-bold ${
+                    path.featured ? "text-orange" : "text-orange-600"
+                  }`}
+                >
+                  Talk about this option
+                  <span aria-hidden="true" className="transition-transform duration-200 group-hover/link:translate-x-1">
+                    &rarr;
+                  </span>
+                </InterestLink>
               </article>
             </Reveal>
           ))}

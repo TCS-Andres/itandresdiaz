@@ -10,6 +10,8 @@
 
   html {
     scroll-behavior: smooth;
+    /* Anchor jumps land below the fixed 72px header instead of under it. */
+    scroll-padding-top: 72px;
     -webkit-text-size-adjust: 100%;
   }
 
@@ -85,6 +87,90 @@
   .label {
     @apply mb-1.5 block font-display text-[13px] font-bold text-navy;
   }
+
+  /* Only flags a field after the visitor has interacted with it, never on load. */
+  .field:user-invalid {
+    border-color: #D9534F;
+  }
+  .field:user-invalid:focus {
+    @apply ring-[#D9534F]/15;
+  }
+
+  /* Tap-to-pick option, backed by a visually hidden radio input. */
+  .chip {
+    @apply inline-flex min-h-[44px] cursor-pointer items-center rounded-full border border-line bg-white px-4 py-2
+           text-left text-[14px] font-medium leading-snug text-navy-400 transition-colors duration-200
+           hover:border-navy/30 hover:text-navy
+           peer-checked:border-navy peer-checked:bg-navy peer-checked:text-white
+           peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-orange;
+  }
+}
+
+/*
+ * Hero underline. A background stripe instead of a positioned bar, so it follows
+ * the phrase across a line wrap and draws left to right, one line after another.
+ */
+.ink {
+  background-image: linear-gradient(#F28D3D, #F28D3D);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 0.1em;
+  animation: ink-draw 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes ink-draw {
+  to { background-size: 100% 0.1em; }
+}
+
+/*
+ * Pointer-following border glow, adapted from Aceternity's Glowing Effect on
+ * 21st.dev. Three mask layers: the full box, minus the content box (leaving a
+ * ring as wide as the padding), then intersected with a conic wedge that points
+ * at the cursor. --glow-start and --glow-active are driven by <GlowBorder>.
+ */
+.glow-border {
+  --glow-width: 2px;
+  --glow-spread: 40;
+  pointer-events: none;
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: var(--glow-width);
+  background: repeating-conic-gradient(
+    from 236.84deg at 50% 50%,
+    #F28D3D 0%,
+    #FCDF09 5%,
+    #2B69D8 10%,
+    #F28D3D 20%
+  );
+  background-attachment: fixed;
+  opacity: var(--glow-active, 0);
+  transition: opacity 0.3s ease;
+  -webkit-mask:
+    conic-gradient(
+      from calc((var(--glow-start, 0) - var(--glow-spread)) * 1deg),
+      transparent 0deg,
+      #fff,
+      transparent calc(var(--glow-spread) * 2deg)
+    ) border-box,
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0) border-box;
+  -webkit-mask-composite: source-in, xor;
+  mask:
+    conic-gradient(
+      from calc((var(--glow-start, 0) - var(--glow-spread)) * 1deg),
+      transparent 0deg,
+      #fff,
+      transparent calc(var(--glow-spread) * 2deg)
+    ) border-box,
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0) border-box;
+  mask-composite: intersect, exclude;
+}
+
+/* The sticky mobile bar steps aside while the menu sheet is open. */
+html[data-menu="open"] .mobile-cta {
+  display: none;
 }
 
 /* Scroll reveal. Hidden until observed; the <noscript> override in the root
@@ -104,6 +190,8 @@
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
+  /* The shortened duration below would still wait out each delay, so draw it up front. */
+  .ink { animation: none; background-size: 100% 0.1em; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

@@ -43,14 +43,20 @@ export const site = {
 export const hero = {
   eyebrow: "For business owners who are ready to grow",
   lede: "I am Andres Diaz. I bring strategy, marketing, and AI together so your business becomes the obvious choice in your market.",
+  /** Short reassurances under the buttons. Every one is already stated elsewhere on the page. */
+  proof: [
+    "You work with me directly",
+    "Strategy, marketing, and AI in one place",
+    "Based in South Florida, working nationwide",
+  ],
 };
 
 export const nav = [
-  { label: "The gap", href: "#gap" },
   { label: "About me", href: "#about" },
   { label: "What I do", href: "#services" },
   { label: "How it works", href: "#process" },
   { label: "Free guide", href: "#guide" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -127,19 +133,44 @@ export const pillars = [
   },
 ];
 
-/** Engagement paths. Consultative on purpose, no figures. */
+/** Options in the contact form. Each becomes a labeled row in the inquiry email. */
+export const businessTypes = [
+  "Home services or trades",
+  "Professional services",
+  "Health and wellness",
+  "Restaurant or hospitality",
+  "Retail or ecommerce",
+  "Real estate or construction",
+  "B2B, manufacturing, or logistics",
+  "Something else",
+];
+
+export const interests = [
+  "AI implementation, missed calls and follow up",
+  "Marketing help, ongoing support",
+  "Website or rebrand project",
+  "Fractional CMO leadership",
+  "Not sure yet, I want to talk it through",
+];
+
+/**
+ * Engagement paths. Consultative on purpose, no figures. `interest` is the
+ * contact form option a path's link preselects, so it must match `interests`.
+ */
 export const paths = [
   {
     title: "Start with AI",
     subtitle: "A focused project",
     body: "We find where you are leaking the most opportunity, usually missed calls, and build the system that closes it.",
     best: "Best if you want a clear win first.",
+    interest: interests[0],
   },
   {
     title: "Marketing partnership",
     subtitle: "An ongoing retainer",
     body: "I lead the plan, my team runs the work, and AI is built in from the start rather than bolted on later.",
     best: "Best if marketing keeps falling to the bottom of your list.",
+    interest: interests[1],
     featured: true,
   },
   {
@@ -147,6 +178,7 @@ export const paths = [
     subtitle: "Marketing leadership, part time",
     body: "For companies that need a marketing leader at the table without carrying a full in house department.",
     best: "Best if you have a team but nobody directing it.",
+    interest: interests[3],
   },
 ];
 
@@ -204,6 +236,41 @@ export const values = [
   {
     title: "A partner, not a vendor",
     body: "I want to be invested in where your business is going.",
+  },
+];
+
+/**
+ * The questions owners ask before they reach out. Answers only restate what the
+ * page already commits to, so nothing here promises more than the rest of the site.
+ */
+export const faqs = [
+  {
+    q: "How much does it cost?",
+    a: "It depends on what we build, so there is no one price for everyone. We scope it together, and you see the full investment before you commit to anything.",
+  },
+  {
+    q: "Do you work with businesses like mine?",
+    a: "Most likely. I work with owners across industries, from home services and professional services to retail, real estate, and B2B.",
+  },
+  {
+    q: "I am not a tech person. Can I still use AI?",
+    a: "Yes. My team and I build and run the systems, so you stay focused on running the business.",
+  },
+  {
+    q: "Will AI make my business sound like a robot?",
+    a: "Not when it is built on your Master Brain. Every AI system I build for you is grounded in how your business actually sounds and runs.",
+  },
+  {
+    q: "Can you guarantee results?",
+    a: "I will not promise you specific numbers. I guarantee the systems and the standard of the work.",
+  },
+  {
+    q: "Do you only work in South Florida?",
+    a: "I am based in South Florida and work with businesses nationwide.",
+  },
+  {
+    q: "What happens after I reach out?",
+    a: "I read every message myself and reply within one business day. The first step is just a conversation, with no pitch and no pressure.",
   },
 ];
 

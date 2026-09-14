@@ -1,5 +1,9 @@
+import { CalendarXIcon, EyeOffIcon, PhoneMissedIcon, SparklesIcon } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
 import { problems } from "@/lib/site";
+
+/** One icon per problem, in the same order as `problems` in site.ts. */
+const ICONS = [PhoneMissedIcon, EyeOffIcon, CalendarXIcon, SparklesIcon];
 
 export function Gap() {
   return (
@@ -17,24 +21,27 @@ export function Gap() {
         </Reveal>
 
         <div className="mt-14 grid gap-5 md:grid-cols-2">
-          {problems.map((problem, i) => (
-            <Reveal key={problem.title} delay={i * 90}>
-              <article className="card group h-full hover:-translate-y-1 hover:border-orange/40 hover:shadow-elevated">
-                <div className="flex items-start gap-4">
-                  <span
-                    aria-hidden="true"
-                    className="mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-orange/12 font-display text-sm font-bold text-orange-600 transition-colors group-hover:bg-orange group-hover:text-navy"
-                  >
-                    {i + 1}
-                  </span>
-                  <div>
-                    <h3 className="text-xl leading-snug">{problem.title}</h3>
-                    <p className="mt-3 leading-relaxed text-navy-400">{problem.body}</p>
+          {problems.map((problem, i) => {
+            const Icon = ICONS[i] ?? SparklesIcon;
+            return (
+              <Reveal key={problem.title} delay={i * 90}>
+                <article className="card group h-full hover:-translate-y-1 hover:border-orange/40 hover:shadow-elevated">
+                  <div className="flex items-start gap-5">
+                    <span
+                      aria-hidden="true"
+                      className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-orange/12 text-orange-600 transition-colors duration-300 group-hover:bg-orange group-hover:text-navy"
+                    >
+                      <Icon className="h-[22px] w-[22px]" />
+                    </span>
+                    <div>
+                      <h3 className="text-xl leading-snug">{problem.title}</h3>
+                      <p className="mt-2.5 leading-relaxed text-navy-400">{problem.body}</p>
+                    </div>
                   </div>
-                </div>
-              </article>
-            </Reveal>
-          ))}
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
 
         <Reveal delay={120}>

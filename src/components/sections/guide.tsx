@@ -17,25 +17,30 @@ export function Guide() {
         style={{ background: "radial-gradient(circle,#F28D3D 0%,transparent 68%)" }}
       />
 
-      <div className="container relative grid items-center gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-        <Reveal className="mx-auto w-full max-w-[330px] lg:max-w-none">
-          <div className="relative">
+      {/*
+        Source order is cover, pitch and form, then the pull quote, so on a phone
+        the form arrives right after the pitch. On desktop the quote tucks under
+        the cover in the left column.
+      */}
+      <div className="container relative grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-10">
+        <Reveal className="mx-auto w-full max-w-[240px] sm:max-w-[300px] lg:col-start-1 lg:row-start-1 lg:mt-4 lg:max-w-[360px]">
+          <div className="group relative [perspective:1400px]">
             <div
               aria-hidden="true"
-              className="absolute -inset-3 rounded-[26px] bg-brand-gradient opacity-25 blur-xl"
+              className="absolute -inset-3 rounded-[26px] bg-brand-gradient opacity-25 blur-xl transition-opacity duration-500 group-hover:opacity-40"
             />
             <Image
               src="/guide-cover.jpg"
               alt="Cover of The Complete Guide to Marketing Channels"
               width={850}
               height={1100}
-              sizes="(max-width: 1024px) 70vw, 330px"
-              className="relative rounded-xl border border-white/12 shadow-elevated"
+              sizes="(max-width: 640px) 240px, (max-width: 1024px) 300px, 360px"
+              className="relative rounded-xl border border-white/12 shadow-elevated transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] lg:[transform:rotateY(10deg)_rotateX(3deg)] lg:group-hover:[transform:rotateY(0deg)_rotateX(0deg)]"
             />
           </div>
         </Reveal>
 
-        <Reveal delay={90}>
+        <Reveal delay={90} className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
           <p className="eyebrow text-orange">{guide.eyebrow}</p>
           <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[2.6rem] lg:leading-[1.12]">
             {guide.title}
@@ -52,13 +57,6 @@ export function Guide() {
               </li>
             ))}
           </ul>
-
-          <blockquote className="mt-8 border-l-[3px] border-orange pl-5">
-            <p className="font-display text-lg font-semibold leading-snug text-white">
-              &ldquo;{guide.pullQuote}&rdquo;
-            </p>
-            <p className="mt-2.5 text-[15px] leading-relaxed text-white/65">{guide.pullBody}</p>
-          </blockquote>
 
           <div className="mt-8 rounded-2xl border border-white/12 bg-white/[0.05] p-6">
             <GuideForm />
@@ -79,6 +77,15 @@ export function Guide() {
               </li>
             ))}
           </ul>
+        </Reveal>
+
+        <Reveal delay={140} className="lg:col-start-1 lg:row-start-2">
+          <blockquote className="border-l-[3px] border-orange pl-5">
+            <p className="font-display text-lg font-semibold leading-snug text-white">
+              &ldquo;{guide.pullQuote}&rdquo;
+            </p>
+            <p className="mt-2.5 text-[15px] leading-relaxed text-white/65">{guide.pullBody}</p>
+          </blockquote>
         </Reveal>
       </div>
     </section>

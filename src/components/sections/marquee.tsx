@@ -6,7 +6,8 @@ export function Marquee() {
   return (
     <section className="border-y border-line bg-white py-6" aria-label="Industries served">
       <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_9%,#000_91%,transparent)]">
-        <ul className="flex w-max animate-marquee items-center gap-10">
+        {/* Pauses under the cursor so someone reading along is not chasing the text. */}
+        <ul className="flex w-max animate-marquee items-center gap-10 hover:[animation-play-state:paused]">
           {row.map((item, i) => (
             <li
               key={`${item}-${i}`}

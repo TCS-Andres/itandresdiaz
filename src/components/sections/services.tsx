@@ -1,22 +1,7 @@
+import { GlowBorder } from "@/components/glow-border";
+import { CheckIcon } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
 import { pillars } from "@/lib/site";
-
-function Check() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="mt-[5px] h-3.5 w-3.5 shrink-0 text-orange"
-      aria-hidden="true"
-    >
-      <path d="M20 6 9 17l-5-5" />
-    </svg>
-  );
-}
 
 export function Services() {
   return (
@@ -36,12 +21,9 @@ export function Services() {
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {pillars.map((pillar, i) => (
             <Reveal key={pillar.title} delay={i * 110}>
-              <article className="card group relative flex h-full flex-col overflow-hidden hover:-translate-y-1.5 hover:shadow-elevated">
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-warm-gradient transition-transform duration-500 group-hover:scale-x-100"
-                />
-                <p className="font-display text-4xl font-bold text-navy-100 transition-colors group-hover:text-orange/40">
+              <article className="card group relative flex h-full flex-col hover:-translate-y-1.5 hover:shadow-elevated">
+                <GlowBorder />
+                <p className="font-display text-4xl font-bold text-navy-100 transition-colors duration-300 group-hover:text-orange/50">
                   {pillar.number}
                 </p>
                 <h3 className="mt-4 text-2xl">{pillar.title}</h3>
@@ -54,7 +36,7 @@ export function Services() {
                 <ul className="mt-6 space-y-2.5 border-t border-line pt-6">
                   {pillar.items.map((item) => (
                     <li key={item} className="flex gap-3 text-[15px] leading-snug text-navy-400">
-                      <Check />
+                      <CheckIcon className="mt-[3px] h-3.5 w-3.5 shrink-0 text-orange" />
                       <span>{item}</span>
                     </li>
                   ))}

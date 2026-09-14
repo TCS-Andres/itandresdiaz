@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { SpinnerIcon } from "@/components/icons";
 import {
   guide,
   GUIDE_FILENAME,
@@ -30,6 +31,12 @@ function startDownload() {
  */
 export function GuideForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const doneRef = useRef<HTMLParagraphElement>(null);
+
+  // The form is replaced by the download panel, so hand focus to its message.
+  useEffect(() => {
+    if (status === "sent" || status === "error") doneRef.current?.focus();
+  }, [status]);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -80,7 +87,13 @@ export function GuideForm() {
   if (status === "sent" || status === "error") {
     return (
       <div className="rounded-2xl border border-orange/30 bg-white/[0.06] p-6 text-center">
-        <p className="font-display text-lg font-bold text-white">Your download is starting.</p>
+        <p
+          ref={doneRef}
+          tabIndex={-1}
+          className="font-display text-lg font-bold text-white focus:outline-none"
+        >
+          Your download is starting.
+        </p>
         <p className="mx-auto mt-2 max-w-sm text-[15px] leading-relaxed text-white/65">
           If nothing happened, the button below will open it directly.
         </p>
@@ -139,7 +152,14 @@ export function GuideForm() {
         disabled={status === "sending"}
         className="btn-primary mt-3 w-full justify-center disabled:cursor-not-allowed disabled:opacity-70"
       >
-        {status === "sending" ? "Sending it over..." : "Download the free guide"}
+        {status === "sending" ? (
+          <>
+            <SpinnerIcon />
+            Sending it over...
+          </>
+        ) : (
+          "Download the free guide"
+        )}
       </button>
 
       <p className="mt-3 text-[13px] leading-relaxed text-white/45">

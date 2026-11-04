@@ -82,6 +82,12 @@ export const PlusIcon = (p: P) => (
   </Icon>
 );
 
+export const XIcon = (p: P) => (
+  <Icon strokeWidth={2.5} {...p}>
+    <path d="M18 6 6 18M6 6l12 12" />
+  </Icon>
+);
+
 export const ArrowRightIcon = (p: P) => (
   <Icon strokeWidth={2.5} {...p}>
     <path d="M5 12h14M13 6l6 6-6 6" />

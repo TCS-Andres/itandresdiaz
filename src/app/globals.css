@@ -20,6 +20,11 @@
     font-feature-settings: "kern" 1, "liga" 1;
   }
 
+  /* The page behind an open modal (the booking calendar) stays put. */
+  body:has(dialog[open]) {
+    overflow: hidden;
+  }
+
   h1, h2, h3, h4 {
     @apply font-display font-bold tracking-tighter;
     text-wrap: balance;

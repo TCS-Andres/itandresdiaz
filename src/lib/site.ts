@@ -55,7 +55,7 @@ export const hero = {
     { before: "Be ", ink: "chosen", after: "." },
   ],
   lede: "I'm Andres Diaz. I bring strategy, marketing, and AI together to get more people to know you, trust you, and do business with you.",
-  primaryCta: "Let's grow your business",
+  primaryCta: "Book a call with me",
   secondaryCta: "Get the free guide",
   /** Short reassurances under the buttons. Every one is already stated elsewhere on the page. */
   proof: [

@@ -53,7 +53,12 @@ export function Hero() {
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="#contact" className="btn-primary group w-full sm:w-auto">
+            <a
+              href={site.calendly}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary group w-full sm:w-auto"
+            >
               {hero.primaryCta}
               <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">
                 &rarr;

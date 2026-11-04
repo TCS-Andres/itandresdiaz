@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CalendlyButton } from "@/components/calendly-button";
+import { site } from "@/lib/site";
 
 type CtaLink = { href: string; label: string };
 
@@ -12,10 +14,11 @@ const HOME_HIDE_WHILE_VISIBLE = ["guide"];
  * it would compete: over the hero (the buttons are right there), while any
  * section in `hideWhileVisible` is on screen, and from `stopAt` down.
  *
- * The defaults are the home page's: free guide and contact.
+ * The defaults are the home page's: free guide and booking a call. A primary
+ * link to `site.calendly` opens the booking popup instead of leaving the page.
  */
 export function MobileCta({
-  primary = { href: "#contact", label: "Let's talk" },
+  primary = { href: site.calendly, label: "Book a call" },
   secondary = { href: "#guide", label: "Free guide" },
   startAfter = "top",
   hideWhileVisible = HOME_HIDE_WHILE_VISIBLE,
@@ -79,9 +82,13 @@ export function MobileCta({
         <a href={secondary.href} className="btn-ghost-dark flex-1 !px-4 !py-3 !text-sm">
           {secondary.label}
         </a>
-        <a href={primary.href} className="btn-primary flex-[1.4] !px-4 !py-3 !text-sm">
-          {primary.label}
-        </a>
+        {primary.href === site.calendly ? (
+          <CalendlyButton className="btn-primary flex-[1.4] !px-4 !py-3 !text-sm">{primary.label}</CalendlyButton>
+        ) : (
+          <a href={primary.href} className="btn-primary flex-[1.4] !px-4 !py-3 !text-sm">
+            {primary.label}
+          </a>
+        )}
       </div>
     </div>
   );

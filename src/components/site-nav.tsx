@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { CalendlyButton } from "@/components/calendly-button";
 import { nav, site } from "@/lib/site";
 
 const SECTION_IDS = nav.map((item) => item.href.slice(1));
@@ -184,9 +185,9 @@ export function SiteNav() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a href="#contact" className="btn-primary hidden min-h-[44px] !px-6 !py-2.5 !text-sm sm:inline-flex">
-            Get in touch
-          </a>
+          <CalendlyButton className="btn-primary hidden min-h-[44px] !px-6 !py-2.5 !text-sm sm:inline-flex">
+            Book a call
+          </CalendlyButton>
 
           <button
             type="button"
@@ -256,13 +257,9 @@ export function SiteNav() {
               </a>
             );
           })}
-          <a
-            href="#contact"
-            onClick={() => setOpen(false)}
-            className="btn-primary mt-3 w-full"
-          >
-            Get in touch
-          </a>
+          <CalendlyButton onClick={() => setOpen(false)} className="btn-primary mt-3 w-full">
+            Book a call
+          </CalendlyButton>
         </nav>
       </div>
     </header>

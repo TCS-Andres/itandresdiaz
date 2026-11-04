@@ -12,6 +12,7 @@ import { Guide } from "@/components/sections/guide";
 import { Faq } from "@/components/sections/faq";
 import { Contact } from "@/components/sections/contact";
 import { MobileCta } from "@/components/mobile-cta";
+import { CalendlyDialog } from "@/components/calendly-button";
 import { faqs, site } from "@/lib/site";
 
 /** Person + ProfessionalService markup so search and AI engines can read the page. */
@@ -78,6 +79,7 @@ export default function Page() {
       </main>
       <SiteFooter />
       <MobileCta />
+      <CalendlyDialog />
     </>
   );
 }

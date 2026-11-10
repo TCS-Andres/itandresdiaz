@@ -208,3 +208,215 @@ html[data-menu="open"] .mobile-cta {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* /links: the link-in-bio page                                        */
+/* Effects adapted from 21st.dev (Magic UI Orbiting Circles, Border    */
+/* Beam, Shimmer Button; wensity Text Cycle; Liquid Aurora), rebuilt   */
+/* as plain CSS so the page ships no animation library.                */
+/* ------------------------------------------------------------------ */
+
+/* Anchor jumps land below the sticky tab bar. */
+html:has(.links-page) {
+  scroll-padding-top: 84px;
+}
+
+/* A faint dot grid, so the page reads as a surface rather than a void. */
+.links-page {
+  background-color: #F4F3EF;
+  background-image: radial-gradient(rgba(28, 25, 42, 0.075) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* Aurora: three blurred brand-color blobs drifting and morphing behind a dark panel. */
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora > span {
+  position: absolute;
+  width: 75%;
+  aspect-ratio: 1;
+  border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
+  filter: blur(46px);
+  opacity: 0.5;
+  will-change: transform;
+  animation: aurora-drift 18s ease-in-out infinite alternate;
+}
+
+.aurora > span:nth-child(1) { background: #F28D3D; top: -28%; left: -24%; }
+.aurora > span:nth-child(2) { background: #2B69D8; bottom: -30%; right: -28%; opacity: 0.55; animation-duration: 22s; animation-delay: -7s; }
+.aurora > span:nth-child(3) { background: #FCDF09; top: 34%; left: 46%; width: 42%; opacity: 0.22; animation-duration: 26s; animation-delay: -13s; }
+
+@keyframes aurora-drift {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%; }
+  50% { transform: translate(12%, 8%) rotate(60deg) scale(1.1); border-radius: 60% 40% 45% 55% / 40% 60% 40% 60%; }
+  100% { transform: translate(-8%, 14%) rotate(120deg) scale(0.95); border-radius: 50% 50% 35% 65% / 60% 45% 55% 40%; }
+}
+
+/*
+ * App icon tile in the brand gradient, matching the AI role renders used on
+ * /summit, so a white line icon can stand in for a custom render.
+ */
+.brand-tile {
+  background:
+    radial-gradient(70% 70% at 88% 92%, #2B69D8 0%, rgba(43, 105, 216, 0) 70%),
+    radial-gradient(60% 60% at 82% 12%, #FCDF09 0%, rgba(252, 223, 9, 0) 70%),
+    #F28D3D;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 -2px 6px rgba(28, 25, 42, 0.18), 0 6px 14px rgba(28, 25, 42, 0.18);
+}
+
+/* Orbiting circles. Each item starts at its own --angle and travels the ring. */
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--size);
+  height: var(--size);
+  margin: calc(var(--size) / -2) 0 0 calc(var(--size) / -2);
+  transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+  animation: orbit calc(var(--duration) * 1s) linear infinite;
+}
+
+.orbit-reverse { animation-direction: reverse; }
+
+@keyframes orbit {
+  from { transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg)); }
+  to { transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg - 360deg)); }
+}
+
+/* Border beam: a short arc of light that runs around a card's edge. */
+@property --beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.border-beam {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--beam-angle),
+    transparent 0deg,
+    transparent 270deg,
+    #F28D3D 325deg,
+    #FCDF09 350deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: beam-spin 7s linear infinite;
+}
+
+@keyframes beam-spin {
+  to { --beam-angle: 360deg; }
+}
+
+/* Shimmer: a spark that slides around the button's rim. */
+.shimmer {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  /* overflow alone lets Chrome paint the blurred, animated spark past a rounded edge. */
+  clip-path: inset(0 round 9999px);
+  background: var(--bg);
+}
+
+.shimmer-spark-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: visible;
+  filter: blur(2px);
+  container-type: size;
+}
+
+.shimmer-spark {
+  position: absolute;
+  inset: 0;
+  height: 100cqh;
+  aspect-ratio: 1;
+  animation: shimmer-slide 3s ease-in-out infinite alternate;
+}
+
+.shimmer-spark::before {
+  content: "";
+  position: absolute;
+  inset: -100%;
+  background: conic-gradient(from 225deg, transparent 0, var(--shimmer-color) 90deg, transparent 90deg);
+  animation: spin-around 6s infinite linear;
+}
+
+.shimmer-backdrop {
+  position: absolute;
+  inset: 2px;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--bg);
+}
+
+@keyframes shimmer-slide {
+  to { transform: translate(calc(100cqw - 100%), 0); }
+}
+
+@keyframes spin-around {
+  0% { transform: rotate(0deg); }
+  15%, 35% { transform: rotate(90deg); }
+  65%, 85% { transform: rotate(270deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Text cycle: each letter blurs in on its own short delay. */
+.cycle-in {
+  display: inline-block;
+  animation: cycle-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cycle-out {
+  display: inline-block;
+  animation: cycle-out 0.32s ease-in both;
+}
+
+@keyframes cycle-in {
+  from { opacity: 0; transform: translateY(0.25em); filter: blur(5px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+@keyframes cycle-out {
+  to { opacity: 0; transform: translateY(-0.25em); filter: blur(5px); }
+}
+
+/* Card headline underline: draws once the card has scrolled in. */
+.ink-reveal {
+  background-image: linear-gradient(#F28D3D, #F28D3D);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 0.1em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size 0.8s cubic-bezier(0.65, 0, 0.35, 1) 0.35s;
+}
+
+.is-visible .ink-reveal {
+  background-size: 100% 0.1em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora > span,
+  .orbit,
+  .border-beam,
+  .shimmer-spark,
+  .shimmer-spark::before {
+    animation: none !important;
+  }
+  .shimmer-spark-wrap { display: none; }
+  .ink-reveal { transition: none; background-size: 100% 0.1em; }
+}

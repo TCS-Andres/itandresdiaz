@@ -28,8 +28,12 @@ function startDownload() {
  * Two fields, then the guide. The lead notification goes to the same Web3Forms
  * inbox as the contact form but with its own subject, so guide downloads are
  * easy to tell apart from real inquiries in the submissions list.
+ *
+ * `section` is the home page's navy guide section. `card` is the light, single
+ * column version that sits inside a narrow card, as on /links.
  */
-export function GuideForm() {
+export function GuideForm({ variant = "section" }: { variant?: "section" | "card" }) {
+  const card = variant === "card";
   const [status, setStatus] = useState<Status>("idle");
   const doneRef = useRef<HTMLParagraphElement>(null);
 
@@ -86,21 +90,29 @@ export function GuideForm() {
 
   if (status === "sent" || status === "error") {
     return (
-      <div className="rounded-2xl border border-orange/30 bg-white/[0.06] p-6 text-center">
+      <div
+        className={
+          card
+            ? "rounded-2xl border border-gold bg-white p-5 text-center"
+            : "rounded-2xl border border-orange/30 bg-white/[0.06] p-6 text-center"
+        }
+      >
         <p
           ref={doneRef}
           tabIndex={-1}
-          className="font-display text-lg font-bold text-white focus:outline-none"
+          className={`font-display text-lg font-bold focus:outline-none ${card ? "text-navy" : "text-white"}`}
         >
           Your download is starting.
         </p>
-        <p className="mx-auto mt-2 max-w-sm text-[15px] leading-relaxed text-white/65">
+        <p
+          className={`mx-auto mt-2 max-w-sm text-[15px] leading-relaxed ${card ? "text-navy-400" : "text-white/65"}`}
+        >
           If nothing happened, the button below will open it directly.
         </p>
         <a
           href={GUIDE_PDF}
           download={GUIDE_FILENAME}
-          className="btn-primary mt-5 inline-flex w-full justify-center sm:w-auto"
+          className={`btn-primary mt-5 inline-flex w-full justify-center ${card ? "" : "sm:w-auto"}`}
         >
           Open the guide
         </a>
@@ -116,7 +128,7 @@ export function GuideForm() {
         <input id="guideBotcheck" name="botcheck" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className={card ? "grid gap-2.5" : "grid gap-3 sm:grid-cols-2"}>
         <div>
           <label className="sr-only" htmlFor="guideName">
             Your name
@@ -128,7 +140,7 @@ export function GuideForm() {
             required
             autoComplete="name"
             placeholder="Your name"
-            className="field-dark"
+            className={card ? "field" : "field-dark"}
           />
         </div>
         <div>
@@ -142,7 +154,7 @@ export function GuideForm() {
             required
             autoComplete="email"
             placeholder="you@yourbusiness.com"
-            className="field-dark"
+            className={card ? "field" : "field-dark"}
           />
         </div>
       </div>
@@ -150,7 +162,9 @@ export function GuideForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="btn-primary mt-3 w-full justify-center disabled:cursor-not-allowed disabled:opacity-70"
+        className={`mt-3 w-full justify-center disabled:cursor-not-allowed disabled:opacity-70 ${
+          card ? "btn bg-gold text-navy shadow-soft hover:brightness-95" : "btn-primary"
+        }`}
       >
         {status === "sending" ? (
           <>
@@ -162,13 +176,17 @@ export function GuideForm() {
         )}
       </button>
 
-      <p className="mt-3 text-[13px] leading-relaxed text-white/45">
-        {guide.formNote} Prefer to just talk?{" "}
-        <a href="#contact" className="text-orange underline-offset-2 hover:underline">
-          Reach out instead
-        </a>
-        , or email {site.email}.
-      </p>
+      {card ? (
+        <p className="mt-3 text-center text-[12.5px] leading-relaxed text-navy-300">{guide.formNote}</p>
+      ) : (
+        <p className="mt-3 text-[13px] leading-relaxed text-white/45">
+          {guide.formNote} Prefer to just talk?{" "}
+          <a href="#contact" className="text-orange underline-offset-2 hover:underline">
+            Reach out instead
+          </a>
+          , or email {site.email}.
+        </p>
+      )}
     </form>
   );
 }

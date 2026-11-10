@@ -18,8 +18,8 @@ const AGENT_ICONS: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
 };
 
 /**
- * An AI agent's app icon: a white line icon on the brand-gradient tile. Used in
- * the agent deck and orbiting the portrait in the header. `icon` is a key from
+ * An AI agent's app icon: a white line icon on the brand-gradient tile, used in
+ * the agent deck. `icon` is a key from
  * `links.ai.agents`.
  */
 export function AgentTile({ icon, size }: { icon: string; size: number }) {

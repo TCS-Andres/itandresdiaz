@@ -91,8 +91,7 @@ export const links = {
     lede: " You're hiring a result: calls answered, leads followed up, hours back in your week.",
     /**
      * The AI employees owners ask for most, each sold by what it gets done, not
-     * by what it is. `icon` picks the tile icon in agent-tile.tsx. They also
-     * orbit the portrait in the header.
+     * by what it is. `icon` picks the tile icon in agent-tile.tsx.
      */
     agents: [
       {

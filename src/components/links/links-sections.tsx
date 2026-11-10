@@ -25,10 +25,9 @@ import {
 } from "@/components/icons";
 import { CopyEmailButton } from "@/components/links/copy-email";
 import { CountUp } from "@/components/links/count-up";
-import { Aurora, BorderBeam, OrbitRing, ShimmerLayers } from "@/components/links/effects";
+import { Aurora, BorderBeam, ShimmerLayers } from "@/components/links/effects";
 import { CardLede, LinkCard } from "@/components/links/link-card";
 import { AgentStack } from "@/components/links/agent-stack";
-import { AgentTile } from "@/components/links/agent-tile";
 import { OutcomeCycle } from "@/components/links/outcome-cycle";
 import { links } from "@/lib/links";
 import { industries, paths, site } from "@/lib/site";
@@ -58,12 +57,12 @@ const ITEM_ICONS: Record<string, IconType> = {
 /*
  * Portrait that breaks out of its circle: the cutout is clipped to the circle
  * below its center line and left unclipped above it, so the head rises out of
- * the top. Numbers are px and must change together.
+ * the top. Change RING to resize it; everything else follows.
  */
-const RING = 132; // circle diameter
-const PHOTO_W = 184;
-const PHOTO_H = 172; // 640x598 cutout at PHOTO_W
-const NUDGE = 9; // the face sits right of the photo's center
+const RING = 196; // circle diameter, px
+const PHOTO_W = Math.round(RING * 1.394); // the photo is wider than the circle so the head can rise out of it
+const PHOTO_H = Math.round((PHOTO_W * 860) / 920); // keeps the 920x860 cutout's shape
+const NUDGE = Math.round(RING * 0.068); // the face sits right of the photo's center
 const PHOTO_LEFT = (RING - PHOTO_W) / 2 - NUDGE;
 const CX = RING / 2 - PHOTO_LEFT; // circle center, in photo coordinates
 const CY = PHOTO_H - RING / 2;
@@ -73,12 +72,13 @@ const BREAKOUT_CLIP = `path("M${CX - R},0 H${CX + R} V${CY} A${R},${R} 0 0 1 ${C
 function BreakoutPortrait() {
   return (
     <div className="relative" style={{ width: RING, height: RING }}>
+      <div aria-hidden="true" className="absolute -inset-6 rounded-full bg-orange/25 blur-3xl" />
       <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_25%,#FCDF09_0%,#F28D3D_45%,#2B69D8_100%)] shadow-[0_0_0_6px_rgba(255,255,255,0.08),0_18px_40px_rgba(0,0,0,0.35)]" />
       <Image
         src="/links/andres-cutout.png"
         alt={site.name}
-        width={640}
-        height={598}
+        width={920}
+        height={860}
         priority
         sizes={`${PHOTO_W}px`}
         className="absolute max-w-none"
@@ -115,19 +115,12 @@ export function LinksHero() {
           {hero.status}
         </p>
 
-        <div className="relative mx-auto mt-2 grid h-[252px] w-[252px] place-items-center">
-          {/* The AI agents from the "AI hire" card, circling. */}
-          <OrbitRing radius={108} duration={42} size={34}>
-            {links.ai.agents.map((agent) => (
-              <AgentTile key={agent.icon} icon={agent.icon} size={34} />
-            ))}
-          </OrbitRing>
-          <div className="relative mt-6">
-            <BreakoutPortrait />
-          </div>
+        {/* The top margin leaves room for the head rising out of the circle. */}
+        <div className="mx-auto mt-[54px] w-fit">
+          <BreakoutPortrait />
         </div>
 
-        <h1 className="-mt-1 text-[2.9rem] leading-none tracking-tightest">{hero.name}</h1>
+        <h1 className="mt-5 text-[2.9rem] leading-none tracking-tightest">{hero.name}</h1>
         <p className="mt-2 text-[13.5px] font-medium text-white/60">{hero.role}</p>
         <div className="mt-4">
           <OutcomeCycle lead={hero.lead} outcomes={hero.outcomes} />

@@ -6,6 +6,7 @@ import {
   ArrowRightIcon,
   BotIcon,
   CalendarIcon,
+  CameraIcon,
   CheckIcon,
   FacebookIcon,
   GlobeIcon,
@@ -13,9 +14,13 @@ import {
   InstagramIcon,
   LinkedInIcon,
   MailIcon,
+  HeartIcon,
   MegaphoneIcon,
+  MonitorIcon,
+  PaletteIcon,
   SearchIcon,
   SparklesIcon,
+  TargetIcon,
   UserPlusIcon,
 } from "@/components/icons";
 import { CopyEmailButton } from "@/components/links/copy-email";
@@ -24,7 +29,7 @@ import { Aurora, BorderBeam, OrbitRing, ShimmerLayers } from "@/components/links
 import { CardLede, LinkCard } from "@/components/links/link-card";
 import { AgentStack } from "@/components/links/agent-stack";
 import { AgentTile } from "@/components/links/agent-tile";
-import { WordCycle } from "@/components/links/word-cycle";
+import { OutcomeCycle } from "@/components/links/outcome-cycle";
 import { links } from "@/lib/links";
 import { industries, paths, site } from "@/lib/site";
 import { CONTACT_CARD_PATH } from "@/lib/summit";
@@ -124,9 +129,9 @@ export function LinksHero() {
 
         <h1 className="-mt-1 text-[2.9rem] leading-none tracking-tightest">{hero.name}</h1>
         <p className="mt-2 text-[13.5px] font-medium text-white/60">{hero.role}</p>
-        <p className="mt-3 font-display text-[28px] font-bold leading-tight tracking-tighter">
-          {hero.lead} <WordCycle words={hero.words} className="text-orange" />
-        </p>
+        <div className="mt-4">
+          <OutcomeCycle lead={hero.lead} outcomes={hero.outcomes} />
+        </div>
 
         <CalendlyButton className="shimmer mx-auto mt-5 flex w-full max-w-[300px] items-center justify-center gap-2 rounded-full py-3.5 font-display text-[15px] font-bold text-navy transition-transform duration-200 [--bg:#F28D3D] [--shimmer-color:#FFFFFF] hover:-translate-y-0.5 active:scale-[0.98]">
           <ShimmerLayers />
@@ -302,6 +307,104 @@ export function AiCard() {
 
       <CalendlyButton className="btn mt-4 w-full bg-sky text-white shadow-soft hover:bg-sky-600">
         {a.cta}
+        <ArrowRightIcon className="h-4 w-4" />
+      </CalendlyButton>
+    </LinkCard>
+  );
+}
+
+const SERVICE_ICONS: Record<string, IconType> = {
+  monitor: MonitorIcon,
+  palette: PaletteIcon,
+  search: SearchIcon,
+  target: TargetIcon,
+  heart: HeartIcon,
+  camera: CameraIcon,
+  mail: MailIcon,
+};
+
+/** A tiny landing page in a browser frame, drawn in CSS, for the website tile. */
+function BrowserSketch() {
+  return (
+    <div aria-hidden="true" className="w-[118px] shrink-0 rotate-[4deg] rounded-xl bg-white p-2 shadow-elevated ring-1 ring-line">
+      <div className="flex gap-1">
+        <span className="h-1.5 w-1.5 rounded-full bg-orange" />
+        <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+        <span className="h-1.5 w-1.5 rounded-full bg-sky" />
+      </div>
+      <div className="mt-2 h-10 rounded-md bg-[linear-gradient(120deg,#1C192A,#4A4658)] p-1.5">
+        <div className="h-1.5 w-3/4 rounded-sm bg-white/90" />
+        <div className="mt-1 h-1 w-1/2 rounded-sm bg-white/40" />
+        <div className="mt-1.5 h-2 w-8 rounded-full bg-orange" />
+      </div>
+      <div className="mt-1.5 grid grid-cols-3 gap-1">
+        <div className="h-3 rounded-sm bg-cream ring-1 ring-line" />
+        <div className="h-3 rounded-sm bg-cream ring-1 ring-line" />
+        <div className="h-3 rounded-sm bg-cream ring-1 ring-line" />
+      </div>
+    </div>
+  );
+}
+
+/** Overlapping brand-color swatches, for the brand development tile. */
+function Swatches() {
+  return (
+    <div aria-hidden="true" className="flex items-center">
+      {["bg-navy", "bg-orange", "bg-gold", "bg-sky"].map((color, i) => (
+        <span key={color} className={`h-7 w-7 rounded-full ring-2 ring-white ${color} ${i ? "-ml-2" : ""}`} />
+      ))}
+      <span className="ml-1.5 font-display text-[17px] font-bold text-navy">Aa</span>
+    </div>
+  );
+}
+
+export function MarketingCard() {
+  const m = links.marketing;
+
+  return (
+    <LinkCard
+      id={m.id}
+      tone="brand"
+      icon={<MegaphoneIcon className="h-[18px] w-[18px]" />}
+      eyebrow={m.eyebrow}
+      title={m.title}
+    >
+      <CardLede strong={m.ledeStrong} rest={m.lede} />
+
+      <ul className="mt-4 grid grid-cols-2 gap-2">
+        {m.services.map((service) => {
+          const Icon = SERVICE_ICONS[service.icon];
+          const wide = service.visual === "browser";
+          return (
+            <li
+              key={service.name}
+              className={`rounded-2xl p-3.5 ring-1 ${
+                wide
+                  ? "col-span-2 flex items-center gap-3 bg-[linear-gradient(135deg,#FFF1E4,#FFFBE0)] ring-orange/20"
+                  : "bg-cream/70 ring-line"
+              }`}
+            >
+              <div className="min-w-0 flex-1">
+                {service.visual === "swatches" ? (
+                  <Swatches />
+                ) : (
+                  <span className="grid h-8 w-8 place-items-center rounded-lg bg-white text-orange-600 shadow-soft ring-1 ring-line">
+                    {Icon && <Icon className="h-4 w-4" />}
+                  </span>
+                )}
+                <p className={`mt-2.5 font-display font-bold leading-tight ${wide ? "text-[17px]" : "text-[14px]"}`}>
+                  {service.name}
+                </p>
+                <p className="mt-1 text-[12.5px] leading-snug text-navy-400">{service.result}</p>
+              </div>
+              {wide && <BrowserSketch />}
+            </li>
+          );
+        })}
+      </ul>
+
+      <CalendlyButton className="btn-primary mt-4 w-full">
+        {m.cta}
         <ArrowRightIcon className="h-4 w-4" />
       </CalendlyButton>
     </LinkCard>

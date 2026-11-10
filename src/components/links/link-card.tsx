@@ -3,13 +3,14 @@ import { Reveal } from "@/components/reveal";
 
 /**
  * The icon chip in each card's header takes its card's color. Every light card
- * is white; the last card is navy so the page ends on the brand's darkest note.
+ * is white; the "work with me" card is navy, so it stands apart as the pitch.
  */
 export const TONES = {
   orange: "bg-orange-50 text-orange-600 ring-orange/25",
   gold: "bg-[#FFF8C2] text-navy ring-gold/70",
   blue: "bg-[#E6EEFC] text-sky ring-sky/25",
   navy: "bg-white/10 text-orange ring-white/15",
+  brand: "brand-tile text-white ring-transparent",
 } as const;
 
 export type Tone = keyof typeof TONES;

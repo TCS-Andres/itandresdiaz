@@ -5,6 +5,7 @@ import {
   AiCard,
   CallCard,
   GUIDE_FORM_ID,
+  MarketingCard,
   GuideCard,
   LinksFooter,
   LinksHero,
@@ -17,7 +18,8 @@ import { site } from "@/lib/site";
 /**
  * The link-in-bio page: the one link on Instagram, Facebook, and every other
  * profile. A phone-sized column: a dark header with the main booking button,
- * a sticky tab bar, then one card per next step.
+ * a sticky tab bar, then one card per next step: call, AI, marketing, work,
+ * guide.
  */
 export const metadata: Metadata = {
   title: links.metaTitle,
@@ -45,7 +47,11 @@ export const viewport: Viewport = {
   themeColor: "#F4F3EF",
 };
 
-const TABS = [links.call, links.guide, links.ai, links.work].map((card) => ({ id: card.id, label: card.tab }));
+/** Calls and AI lead, then marketing; the free guide closes the page. Cards below follow the same order. */
+const TABS = [links.call, links.ai, links.marketing, links.work, links.guide].map((card) => ({
+  id: card.id,
+  label: card.tab,
+}));
 
 export default function LinksPage() {
   return (
@@ -57,9 +63,10 @@ export default function LinksPage() {
           <SectionTabs tabs={TABS} />
           <div className="mt-4 grid gap-4">
             <CallCard />
-            <GuideCard />
             <AiCard />
+            <MarketingCard />
             <WorkCard />
+            <GuideCard />
           </div>
         </div>
 

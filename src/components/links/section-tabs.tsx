@@ -1,14 +1,6 @@
 "use client";
 
-import { useEffect, useState, type ComponentType, type SVGProps } from "react";
-import { BotIcon, CalendarIcon, HandshakeIcon, SparklesIcon } from "@/components/icons";
-
-const ICONS: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
-  call: CalendarIcon,
-  guide: SparklesIcon,
-  ai: BotIcon,
-  work: HandshakeIcon,
-};
+import { useEffect, useState } from "react";
 
 type Tab = { id: string; label: string };
 
@@ -68,18 +60,16 @@ export function SectionTabs({ tabs }: { tabs: Tab[] }) {
           }}
         />
         {tabs.map((tab, i) => {
-          const Icon = ICONS[tab.id];
           const isActive = i === active;
           return (
             <li key={tab.id} className="relative">
               <a
                 href={`#${tab.id}`}
                 aria-current={isActive ? "location" : undefined}
-                className={`flex items-center justify-center gap-1.5 rounded-full py-2.5 font-display text-[13px] font-bold transition-colors duration-300 ${
+                className={`flex items-center justify-center whitespace-nowrap rounded-full px-1 py-2.5 font-display text-[12.5px] font-bold tracking-[-0.01em] transition-colors duration-300 ${
                   isActive ? "text-white" : "text-navy-400 hover:text-navy"
                 }`}
               >
-                {Icon && <Icon className={`h-[15px] w-[15px] ${isActive ? "text-orange" : ""}`} />}
                 {tab.label}
               </a>
             </li>

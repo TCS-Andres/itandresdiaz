@@ -18,9 +18,23 @@ export const links = {
     status: "South Florida · Working nationwide",
     name: site.name,
     role: site.role,
-    /** "Be" stays put while these cycle in after it. */
-    lead: "Be",
-    words: ["known.", "trusted.", "chosen."],
+    /**
+     * "I help you" stays put while the results cycle in under it, each with the
+     * service that gets it. AI leads and alternates with marketing, so both
+     * sides of the business show up. Keep each `text` under about 23
+     * characters so it fits one line on a phone.
+     */
+    lead: "I help you",
+    outcomes: [
+      { text: "never miss a call.", service: "AI Receptionist" },
+      { text: "turn clicks into calls.", service: "Website Design" },
+      { text: "answer every lead.", service: "AI Lead Follow-up" },
+      { text: "be remembered.", service: "Brand Development" },
+      { text: "win back hours.", service: "AI Automation" },
+      { text: "get found online.", service: "SEO and AI Search" },
+      { text: "stay open 24/7.", service: "AI Website Chat" },
+      { text: "grow with a plan.", service: "Fractional CMO" },
+    ],
     cta: "Book a free call",
   },
 
@@ -121,6 +135,40 @@ export const links = {
     swipeHint: "Swipe or tap to meet the team",
     note: summit.team.note,
     cta: "Find your first hire",
+  },
+
+  marketing: {
+    id: "marketing",
+    tab: "Marketing",
+    eyebrow: "Full-service marketing",
+    title: { before: "A full marketing team, ", ink: "minus the overhead", after: "." },
+    ledeStrong: "I lead the plan, my team does the work.",
+    lede: " You stay out of the weeds.",
+    /**
+     * Everything the agency does, each sold by what it does for the owner.
+     * `icon` picks the icon in MarketingCard. `visual` swaps the icon for a
+     * small drawing; "browser" also makes the tile full width.
+     */
+    services: [
+      {
+        icon: "monitor",
+        name: "Website Design and Development",
+        result: "A fast, modern site built to turn visitors into calls.",
+        visual: "browser",
+      },
+      {
+        icon: "palette",
+        name: "Brand Development",
+        result: "A look and message people remember.",
+        visual: "swatches",
+      },
+      { icon: "search", name: "SEO and AI Search", result: "Show up on Google and in AI answers." },
+      { icon: "target", name: "Paid Ads", result: "Google and Meta ads aimed at the right buyers." },
+      { icon: "heart", name: "Social Media", result: "Show up every week, in your voice." },
+      { icon: "camera", name: "Photo and Video", result: "Content that shows off your best work." },
+      { icon: "mail", name: "Email and Text", result: "Stay top of mind with past customers." },
+    ],
+    cta: "Talk about your marketing",
   },
 
   work: {
